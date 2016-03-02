@@ -67,6 +67,9 @@ use \core\router,
 Router::any('', '\controllers\welcome@index');
 Router::any('/subpage', '\controllers\welcome@subpage');
 
+// admin routes
+Router::any('/admin','\controllers\AdminPagesController@index');
+
 //if no route found
 Router::error('\core\error@index');
 
@@ -75,7 +78,4 @@ Router::$fallback = false;
 
 //execute matched routes
 Router::dispatch();
-
-
-// Custom Routes
 
