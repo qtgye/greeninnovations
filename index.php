@@ -29,7 +29,7 @@ if (!is_readable('app/core/config.php')) {
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	define('ENVIRONMENT', defined( 'ENV' ) ? ENV : 'development' );
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -75,3 +75,7 @@ Router::$fallback = false;
 
 //execute matched routes
 Router::dispatch();
+
+
+// Custom Routes
+
