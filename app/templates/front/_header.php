@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($page_title) ? $page_title . ' | ' : '' ?> <?= $info['site-title'] ?></title>
-    <meta name="description" content="{{ $info['description'] }}">
+    <meta name="description" content="<?= $info['description'] ?>">
     <meta name="keywords" content="">
 
     <!--pageMeta-->

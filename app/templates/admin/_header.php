@@ -8,9 +8,9 @@
     <meta name="description" content="Admin Panel">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="/uploads/{{ $site_info['favicon'] }}">
+    <link rel="shortcut icon" href="/uploads/<?= $site_info['favicon'] ?>">
 
-    <!-- <title>{{ !empty($page_title) ? $page_title.' | ' : '' }}Green Innovation Admin</title> -->
+    <title><?= !empty($page_title) ? $page_title.' | ' : '' ?>Green Innovation Admin</title>
 
     <!-- Bootstrap CSS -->    
     <link href="/app/templates/admin/css/bootstrap.min.css" rel="stylesheet">
