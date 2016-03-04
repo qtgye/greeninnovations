@@ -64,9 +64,10 @@ class PagesController extends Controller {
     public function projects ()
     {
         $data = array_merge(self::$data,[
-            'projects' => \App\Project::all(),
+            'page' => 'projects',
+            'projects' => \models\Project::all(),
         ]);
-        return view('front.projects', $data);
+        View::rendertemplate('page',$data);
     }
 
     public function news ()
