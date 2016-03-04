@@ -48,7 +48,7 @@ class AdminPagesController extends Controller {
             'page' => 'index',
             'page_title' => 'Welcome'
         ]);
-        View::rendertemplate('_page', $data);
+        View::rendertemplate('page', $data);
     }
 
     public function all($model_name)
@@ -63,7 +63,7 @@ class AdminPagesController extends Controller {
                         'model_plural' => $model::$plural,
                         'items' => $model::all()
                     ]);
-            View::rendertemplate('_page', $data);
+            View::rendertemplate('page', $data);
 
         } else {
 
@@ -80,7 +80,7 @@ class AdminPagesController extends Controller {
             'method' => 'create'
         ]);
 
-        View::rendertemplate('_page', $data);
+        View::rendertemplate('page', $data);
         $this->resetSessionErrors();
     }
 
@@ -100,7 +100,7 @@ class AdminPagesController extends Controller {
                     ]);
 
             if ( $data[$model_name] !== NULL ) {
-                View::rendertemplate('_page',$data);
+                View::rendertemplate('page',$data);
             } else {
                 url::redirect('/admin/' . $model_name, true);
             }
@@ -129,7 +129,7 @@ class AdminPagesController extends Controller {
             'items' => $infos,
         ]);
 
-        View::rendertemplate('_page', $data);
+        View::rendertemplate('page', $data);
     }
 
     public function get_upload_limit(Request $request)

@@ -104,12 +104,33 @@ abstract class Model extends Controller {
 	 * @param  integer $id the id of the entry to search
 	 * @return object the entry
 	 */
-	public function findOne($id)
+	private function findOne($id)
 	{
 		return $this->_db->select('SELECT * FROM '. PREFIX.$this->table . ' WHERE id = :id',[ ':id' => $id] );
 	}
 
-	private function queryAll ($sort_by = 'id', $order = 'DESC')
+	/**
+	 * gets a set of records within the limit and offset
+	 * @param  integer $limit number of records to fetch
+	 * @param  integer $offset the starting point
+	 * @return array set of records
+	 */
+	private function getSet ($limit = 20,$offset = 0)
+	{
+		$args = [
+			':limit' => $limit,
+			':offset' => $offset
+		];
+		return $this->_db->select('SELECT * FROM '. PREFIX.$this->table . ' ORDER BY created_at DESC LIMIT :limit OFFSET :offset', $args );
+	}
+
+	public static function get ($limit = 20,$offset = 0)
+	{
+		$instance = new static();
+		return $instance->getSet($limit,$offset);
+	}
+
+	private function queryAll ($sort_by , $order)
 	{
 		$result = $this->_db->select("SELECT * FROM " . PREFIX . $this->table . " ORDER BY " . $sort_by . " " . $order );
 		return $result;
@@ -144,7 +165,7 @@ abstract class Model extends Controller {
 	public static function all ($sort_by = 'id', $order = 'DESC')
 	{
 		$instance = new static();
-		return $instance->queryAll();
+		return $instance->queryAll($sort_by, $order);
 	}
 
 }
