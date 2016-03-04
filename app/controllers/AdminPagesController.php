@@ -1,7 +1,8 @@
 <?php namespace controllers;
 use core\view,
     core\controller,
-    \helpers\url;
+    \helpers\url,
+    \helpers\session;
 
 /*
  * Welcome controller
@@ -32,16 +33,13 @@ class AdminPagesController extends Controller {
 
         parent::__construct();
         self::$data['view'] = $this->view;
-        \helpers\session::set('template','admin');
-        \helpers\session::set('errors',\helpers\session::get('errors'));
+        \helpers\session::set('template','admin');        
     }
 
     /**
      * Define Index page title and load template files
      */
     public function index() {
-        global $errors;
-        $errors = \helpers\session::get('errors');
         self::update_page_data();
         $data = array_merge( self::$data, [
             'method' => 'index',
@@ -73,22 +71,53 @@ class AdminPagesController extends Controller {
     }
 
     public function create($model_name) {
-        global $errors;
-        $errors = \helpers\session::get('errors');
+        $model = '\\models\\' . ucfirst($model_name);
         self::update_page_data($model_name);
         $data = array_merge( self::$data, [
-            'method' => 'create'
+            'model_plural'  => $model::$plural,
+            'subpage'       => 'update',
+            'subpage_title' => 'Update',
+            'submit_text'   => 'Create',
+            'method'        => 'create',
         ]);
 
         View::rendertemplate('page', $data);
-        $this->resetSessionErrors();
+    }
+
+    public function update ($model_name,$id)
+    {
+        if ( array_key_exists($model_name, self::$data['resourced_models']) ) {
+            global $input, $errors;
+            $model = '\\models\\' . ucfirst($model_name);       
+
+            // validate
+            if ( $this->validate( $input->all(), $model::$rules ) ) {
+                $res = call_user_func( [$model,'find'], $id );
+                $res->update($input->all());
+                $res->save();
+                $input->update($res->attributes);
+                session::flash(['success'=>'Succesfully updated entry.']);
+                url::redirect('/admin/' . $model_name . '/' . $id, true);
+            } else {
+                url::previous();
+            }
+        }
+
+        url::redirect('/admin/'.$model_name,true);
     }
 
     public function edit($model_name, $id)
     {
         if ( array_key_exists($model_name, self::$data['resourced_models']) || $model_name == 'media' ) {
+            global $input;
 
             $model = '\\models\\' . ucfirst($model_name);
+            $item = call_user_func( [$model,'find'], $id );
+
+            if ( !$item ) {
+                url::redirect('/admin/' . $model_name, true);
+            }
+
             self::update_page_data($model_name);
             $data = array_merge(self::$data,[
                         'model_plural'  => $model::$plural,
@@ -96,14 +125,12 @@ class AdminPagesController extends Controller {
                         'subpage_title' => 'Update',
                         'submit_text'   => 'Save',
                         'method'        => 'edit',
-                        $model_name     => call_user_func( [$model,'find'], $id )
+                        $model_name    => $item
                     ]);
-
-            if ( $data[$model_name] !== NULL ) {
-                View::rendertemplate('page',$data);
-            } else {
-                url::redirect('/admin/' . $model_name, true);
-            }
+            if ( $input->is_empty() ) {
+                $input->update(get_object_vars($item));
+            }            
+            View::rendertemplate('page',$data);
 
         } else {
             url::redirect('/admin', true);
@@ -151,13 +178,6 @@ class AdminPagesController extends Controller {
         ]);
 
         return json_encode($response);
-    }
-
-    private function resetSessionErrors ()
-    {
-        global $errors;
-        $errors = null;
-        \helpers\session::destroy('errors');
     }
 
     /**

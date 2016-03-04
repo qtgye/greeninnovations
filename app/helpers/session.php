@@ -89,15 +89,16 @@ class Session {
 		return false;
 	}
 
-	public static function pushToKey ($key = null, $value = '')
+	public static function mergeToKey ($key = null, $value = '')
 	{
-		if ( $key && self::get($key) ) {
+
+		if ( $key ) {
 
 			$existingValue = self::get($key);
 
 			if ( is_array( $existingValue ) )
 			{
-				$existingValue[] = $value;
+				$existingValue = array_merge($existingValue,$value);
 			}
 			else if ( is_numeric($existingValue) )
 			{
@@ -152,11 +153,33 @@ class Session {
 		}
 	}
 
+	public static function flash ( $flash_array = false) {
+		if ( is_array($flash_array) ) {
+			$current_flash = self::get('flash');
+			$current_flash = $current_flash ? $current_flash : [];
+			$new_flash = array_merge($current_flash,$flash_array);
+			self::set('flash',$new_flash);
+		}
+	}
+
+	public static function has_flash ($flash_key)
+	{
+		$flash = self::get('flash');
+		if ( is_array($flash) ) {
+			return array_key_exists($flash_key, $flash);
+		}
+		return false;
+	}
+
+	public function get_flash ($flash_key)
+	{
+		$flash = self::get('flash');
+		return $flash[$flash_key];
+	}
+
 	public static function resetFlash ()
 	{
-		self::set('errors',false);
-		self::set('success',false);
-		self::set('messages',false);
+		self::destroy('flash');
 	}
 
 }

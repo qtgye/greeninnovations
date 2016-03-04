@@ -1,12 +1,12 @@
-
+<?php use \helpers\session; ?>
 <div class="col-lg-12 c-list js-list">
         
-  <!-- @if ( session()->has('success') )
+  <?php if ( session::has_flash('success') ): ?>
     <div class="alert alert-block alert-success fade in">
-      {{ session()->get('success') }}
+      <?= session::get_flash('success') ?>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
-  @endif   -->     
+  <?php endif ?>   
   
     <?php if ( $items ): ?>
 
@@ -34,7 +34,7 @@
             You have no entry here yet.
           </p>
           <p>
-            <a class="btn btn-primary" href="/admin/{{ $model_name }}/new">Add your first <?=$page_title?> </a>
+            <a class="btn btn-primary" href="/admin/<?= $model_name ?>/new">Add your first <?=$page_title?> </a>
           </p>
         </blockquote>
 

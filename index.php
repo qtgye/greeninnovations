@@ -56,11 +56,24 @@ if (defined('ENVIRONMENT')){
 
 }
 
+require "helpers.php";
+
+// use
+use \helpers\session,
+	\helpers\errors,
+	\helpers\input,
+	\core\config;
 
 //initiate config
-new \core\config();
+new Config();
+
+// initiate errors and input
+Errors::setup();
+Input::setup();
 
 require "routes.php";
 
 // reset flash messages here
-\helpers\session::resetFlash();
+Session::resetFlash();
+Errors::reset();
+Input::reset();

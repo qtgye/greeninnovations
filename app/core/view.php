@@ -1,5 +1,7 @@
 <?php namespace core;
 
+use \helpers\session;
+
 /*
  * View - load template pages
  *
@@ -20,6 +22,7 @@ class View {
 	 * @param  array $error array of errors
 	 */
 	public static function render($path,$data = false, $error = false){
+		global $errors, $input, $session;
 		if (!headers_sent()) {
 			foreach (self::$headers as $header) {
 				header($header, true);
@@ -39,6 +42,7 @@ class View {
 	 * @param  array $data  array of data
 	 */
 	public static function rendertemplate($path,$data = false){
+		global $errors, $input, $session;
 		if (!headers_sent()) {
 			foreach (self::$headers as $header) {
 				header($header, true);

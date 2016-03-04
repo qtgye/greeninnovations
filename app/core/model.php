@@ -62,18 +62,6 @@ abstract class Model extends Controller {
 
 	}
 
-	protected function validate ( $data = [], $rules = [] )
-	{
-		$is_valid = \helpers\gump::is_valid($data, $rules);
-
-		if ( $is_valid === true ) {
-			return true;
-		} else {
-			// var_dump($is_valid);
-			return false;
-		}
-	}
-
 	/**
 	 * saves the new instance to the database
 	 * @return [type] [description]
@@ -82,16 +70,24 @@ abstract class Model extends Controller {
 	{
 		if ( $this->table ) {
 
-			$id = $this->_db->insert(PREFIX.$this->table,$this->attributes);
+			if ( !isset($this->id) ) {
+				
+				if ( $this->_db->insert(PREFIX.$this->table,$this->attributes) ) {
+					$this->attributes['id'] = $id;
+					$this->id = $id;
+					return true;
+				}				
 
-			if ( !$id ) {
-				return false;
+			} else {
+
+				if ( $this->_db->update(PREFIX.$this->table,$this->attributes, [ 'id' => $this->id ]) ) {
+					return true;
+				}
+
 			}
 
-			$this->attributes['id'] = $id;
-			$this->id = $id;
-
-			return true;
+			return false;
+			
 		}
 
 		$exception = new \Exception('The table name was not set for ' . self::class);
@@ -100,13 +96,21 @@ abstract class Model extends Controller {
 	}
 
 	/**
-	 * finds an entry by id
-	 * @param  integer $id the id of the entry to search
-	 * @return object the entry
-	 */
-	private function findOne($id)
+	 * updates the attributes of the model
+	 * @param  assoc $new_data the new data
+	 * @return void 
+	 */	
+	public function update ($new_data)
 	{
-		return $this->_db->select('SELECT * FROM '. PREFIX.$this->table . ' WHERE id = :id',[ ':id' => $id] );
+		// var_dump($new_data);
+		$old_attributes = $this->attributes;
+		if ( is_array($new_data) ) {
+			foreach ($this->fillable as $key) {
+				$this->attributes[$key] = isset($new_data[$key]) ? $new_data[$key] : $this->attributes[$key];
+				$this->{$key} = $this->attributes[$key];
+			}
+			$this->attibutes['updated_at'] = date('Y-m-d H:i:s');
+		}
 	}
 
 	/**
@@ -136,10 +140,27 @@ abstract class Model extends Controller {
 		return $result;
 	}
 
-	public static function find ($id)
+	public static function find ($id = null)
 	{
+		if ( !$id ) {
+			return null;
+		}
+
 		$instance = new static();
-		return $instance->findOne($id);
+		$result = $instance->_db->select('SELECT * FROM '. PREFIX.$instance->table . ' WHERE id = :id LIMIT 1',[ ':id' => $id] );
+		
+		if ( !isset($result[0]) ) {
+			return null;
+		}
+
+		if ( isset($result[0]) ) {
+			$found = get_object_vars($result[0]);
+			$new = static::create($found);
+			$new->id = $found['id'];
+			return $new;
+		}
+
+		return null;
 	}
 
 	/**
@@ -153,9 +174,6 @@ abstract class Model extends Controller {
 
 		if ( is_array($data) ) {
 			$new = new static($data);
-			if ( !$new->save() ) {
-				return null;
-			}			
 		}
 
 		return $new;

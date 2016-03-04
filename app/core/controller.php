@@ -1,6 +1,7 @@
 <?php namespace core;
 use core\view,
-	core\language;
+	core\language,
+	\helpers\session;
 
 /*
  * controller - base controller
@@ -29,14 +30,23 @@ abstract class Controller {
 		
 		//initialise the language object
 		$this->language = new Language();
+		
+	}
 
-		// var_dump($_REQUEST);
-		// exit;
+	public function validate ($data = [], $rules = [])
+	{
+		$has_error = false;
 
-		if ( $_POST ) {
-			var_dump($_REQUEST);
-			exit;
+		foreach ($rules as $key => $value) {
+			// var_dump($data[$key]);
+			$is_valid = \helpers\gump::is_valid( [$key=>$data[$key]], [$key=>$rules[$key]] );
+			if($is_valid !== true) {
+			    Session::mergeToKey('errors',[$key => $is_valid[0]]);
+			    $has_error = true;
+			}
 		}
+
+		return !$has_error;
 	}
 
 }
