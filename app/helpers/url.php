@@ -81,6 +81,12 @@ class Url {
 		exit;
 	}
 
+	// public function previousWithInput ()
+	// {
+		
+	// 	$this->previous();
+	// }
+
 	/**
 	 * get all url parts based on a / seperator
 	 * @return array of segments

@@ -88,6 +88,29 @@ class Session {
 
 		return false;
 	}
+
+	public static function pushToKey ($key = null, $value = '')
+	{
+		if ( $key && self::get($key) ) {
+
+			$existingValue = self::get($key);
+
+			if ( is_array( $existingValue ) )
+			{
+				$existingValue[] = $value;
+			}
+			else if ( is_numeric($existingValue) )
+			{
+				$existingValue += $value;				
+			}
+			else if ( is_string($existingValue) ) {
+				$existingValue .= $value;	
+			}
+
+			self::set($key,$existingValue);
+		}	
+		return null;
+	}
 	
 	/**
 	 * @return string with the session id.
@@ -127,6 +150,13 @@ class Session {
 			}
 
 		}
+	}
+
+	public static function resetFlash ()
+	{
+		self::set('errors',false);
+		self::set('success',false);
+		self::set('messages',false);
 	}
 
 }

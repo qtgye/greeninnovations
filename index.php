@@ -56,26 +56,11 @@ if (defined('ENVIRONMENT')){
 
 }
 
+
 //initiate config
 new \core\config();
 
-//create alias for Router
-use \core\router,
-    \helpers\url;
+require "routes.php";
 
-//define routes
-Router::any('', '\controllers\welcome@index');
-Router::any('/subpage', '\controllers\welcome@subpage');
-
-// admin routes
-Router::any('/admin','\controllers\AdminPagesController@index');
-
-//if no route found
-Router::error('\core\error@index');
-
-//turn on old style routing
-Router::$fallback = false;
-
-//execute matched routes
-Router::dispatch();
-
+// reset flash messages here
+\helpers\session::resetFlash();

@@ -25,6 +25,11 @@ class View {
 				header($header, true);
 			}
 		}
+		if ( $data ) {
+			foreach ($data as $key => $value) {
+				$$key = $value;
+			}
+		}
 		require "app/views/$path.php";
 	}
 
@@ -37,6 +42,11 @@ class View {
 		if (!headers_sent()) {
 			foreach (self::$headers as $header) {
 				header($header, true);
+			}
+		}
+		if ( $data ) {
+			foreach ($data as $key => $value) {
+				$$key = $value;
 			}
 		}
 		require "app/templates/". \helpers\Session::get('template') ."/$path.php";

@@ -29,6 +29,14 @@ abstract class Controller {
 		
 		//initialise the language object
 		$this->language = new Language();
+
+		// var_dump($_REQUEST);
+		// exit;
+
+		if ( $_POST ) {
+			var_dump($_REQUEST);
+			exit;
+		}
 	}
 
 }
