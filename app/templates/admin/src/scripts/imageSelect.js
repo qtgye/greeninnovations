@@ -183,7 +183,6 @@ App.createModule( 'ImageSelect', (function (app) {
 
             ImageInput.$modalBtn.on('click',function (e) {
                 e.preventDefault();
-                console.log('this should only open',$modal );
                 $modal.modal('show');
             });
 
@@ -229,6 +228,9 @@ App.createModule( 'ImageSelect', (function (app) {
                         onUploadError(xhr);
                         return;
                     }
+                    $input
+                    .val('')
+                    .trigger('change');
                     var fileData = resp.data,
                         _newSelectable = newFromFileName(resp.data.file_name);
                     _newSelectable.select();

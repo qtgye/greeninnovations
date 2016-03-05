@@ -13,9 +13,9 @@
         <?php if ($item->file_type == 'image'): ?>
             <img class="list-thumbnail js-zoomable" src="/uploads/<?= $item->file_name ?>" title="<?= $item->title ?>" alt="">
         <?php elseif ( ! $item->file_type ): ?>
-            <img class="list-thumbnail thumbnail-small" src="/back/images/other.png" title="<?= $item->title ?>" alt="">
+            <img class="list-thumbnail thumbnail-small" src="/app/templates/admin/images/other.png" title="<?= $item->title ?>" alt="">
         <?php else: ?>
-            <img class="list-thumbnail thumbnail-small"src="/back/images/<?= $item->file_type ?>.png" title="<?= $item->title ?>" alt="">
+            <img class="list-thumbnail thumbnail-small"src="/app/templates/admin/images/<?= $item->file_type ?>.png" title="<?= $item->title ?>" alt="">
         <?php endif ?>
     </td>
     <td class="text-overflow center-text"><?= $item->title ?></td>

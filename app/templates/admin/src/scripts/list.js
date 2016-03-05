@@ -43,13 +43,15 @@ App.createModule( 'List', (function (app) {
             if ( !currentId ) return false;   
             var token = $('input[name="_token"]').val();        
             $.ajax({
-                url : '/api/' + model + '/' + currentId,
-                type : 'DELETE',
+                url : '/api/' + model,
+                type : 'POST',
+                dataType : 'json',
                 data: {
-                    _token : token,
-                    id      : currentId
+                    _token  : token,
+                    id      : currentId,
+                    method  : 'DELETE'
                 },
-                success : function (data) {                    
+                success : function (data) {          
                     if ( data.success ) {
                         $rows.filter('[data-item-id='+currentId+']').remove();
                         currentId = null;
@@ -57,10 +59,10 @@ App.createModule( 'List', (function (app) {
                     }
                     currentId = null;
                     // Wasnt able to delete
-                    console.log(data.data.message);
+                    console.warn(data.data.message);
                 },
                 error : function (xhr) {
-                    console.log(xhr);
+                    console.warn(xhr);
                 }
             });
         }

@@ -51,6 +51,7 @@
   <section id="container" class="">
 
     <header class="header">
+
         <div class="header-content clearfix">
             
             <!--logo start-->

@@ -114,6 +114,28 @@ abstract class Model extends Controller {
 	}
 
 	/**
+	 * deletes the current object from db
+	 * @return [type] [description]
+	 */
+	public function destroy ()
+	{
+		$data = [ 'id' => $this->id ];
+		$this->_db->delete(PREFIX.$this->table, $data);
+
+		// check if still existing
+		if ( static::find($data['id']) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public function toArray ()
+	{
+		return $this->attributes;
+	}
+
+	/**
 	 * gets a set of records within the limit and offset
 	 * @param  integer $limit number of records to fetch
 	 * @param  integer $offset the starting point

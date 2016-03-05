@@ -33,6 +33,12 @@ class AdminPagesController extends Controller {
 
         parent::__construct();
         self::$data['view'] = $this->view;
+        self::$data['site_info'] = [];
+
+        $info = \models\Info::all();
+        foreach ($info as $info) {
+            self::$data['site_info'][$info->name] = $info->value;
+        }        
         \helpers\session::set('template','admin');        
     }
 
@@ -157,6 +163,43 @@ class AdminPagesController extends Controller {
         ]);
 
         View::rendertemplate('page', $data);
+    }
+
+    public function ajax ( $model_name )
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        $data = $_POST;
+
+        $response = [
+            'success' => false,
+            'data'  => null
+        ];
+
+        if ( $data['method'] == "DELETE" && isset($data['id']) ) {
+            if ( array_key_exists($model_name, self::$data['resourced_models']) ) {
+                $model = '\\models\\' . $model_name;
+                $item = $model::find($_POST['id']);
+                if ( $item ) {
+                    if ( $item->destroy() ) {
+                        $response['success'] = true;
+                        $response['data'] = [
+                            'message' => 'The item was successfully deleted.'
+                        ];
+                    } else {
+                        $response['data'] = [
+                            'message' => 'The item was not delted due to some error.'
+                        ];
+                    }                    
+                } else {
+                    $response['data'] = [
+                        'message' => 'The item does not exist.'
+                    ];
+                }
+            }              
+        }
+
+        echo json_encode($response);
+        exit;
     }
 
     public function get_upload_limit(Request $request)

@@ -1,5 +1,5 @@
 <?php use \helpers\session; ?>
-<div class="col-lg-12 c-list js-list">
+<div class="col-lg-12 c-list js-list" data-model="<?= $model_name ?>">
         
   <?php if ( session::has_flash('success') ): ?>
     <div class="alert alert-block alert-success fade in">

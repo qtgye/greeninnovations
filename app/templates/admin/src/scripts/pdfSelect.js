@@ -1,4 +1,4 @@
-App.createModule( 'ImageSelect', (function (app) {
+App.createModule( 'PdfSelect', (function (app) {
     
     var module = {};
 
@@ -13,7 +13,8 @@ App.createModule( 'ImageSelect', (function (app) {
 
     $container = $('.js-pdf-input'),
     $text        = $container.find('.input-text'),
-    $input       = $container.find('input'),
+    $input       = $container.find('input[type="file"]'),
+    $holder      = $container.find('.js-filename-holder'),
 
     currentValue;
 
@@ -54,6 +55,10 @@ App.createModule( 'ImageSelect', (function (app) {
 
         })
         .trigger('change');
+
+        $holder.on('change',function () {
+            $text.text($holder.val())
+        }).trigger('change')
 
     }
 

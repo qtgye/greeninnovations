@@ -483,13 +483,15 @@ App.createModule( 'List', (function (app) {
             if ( !currentId ) return false;   
             var token = $('input[name="_token"]').val();        
             $.ajax({
-                url : '/api/' + model + '/' + currentId,
-                type : 'DELETE',
+                url : '/api/' + model,
+                type : 'POST',
+                dataType : 'json',
                 data: {
-                    _token : token,
-                    id      : currentId
+                    _token  : token,
+                    id      : currentId,
+                    method  : 'DELETE'
                 },
-                success : function (data) {                    
+                success : function (data) {          
                     if ( data.success ) {
                         $rows.filter('[data-item-id='+currentId+']').remove();
                         currentId = null;
@@ -497,10 +499,10 @@ App.createModule( 'List', (function (app) {
                     }
                     currentId = null;
                     // Wasnt able to delete
-                    console.log(data.data.message);
+                    console.warn(data.data.message);
                 },
                 error : function (xhr) {
-                    console.log(xhr);
+                    console.warn(xhr);
                 }
             });
         }
@@ -728,7 +730,6 @@ App.createModule( 'ImageSelect', (function (app) {
 
             ImageInput.$modalBtn.on('click',function (e) {
                 e.preventDefault();
-                console.log('this should only open',$modal );
                 $modal.modal('show');
             });
 
@@ -774,6 +775,9 @@ App.createModule( 'ImageSelect', (function (app) {
                         onUploadError(xhr);
                         return;
                     }
+                    $input
+                    .val('')
+                    .trigger('change');
                     var fileData = resp.data,
                         _newSelectable = newFromFileName(resp.data.file_name);
                     _newSelectable.select();
@@ -871,7 +875,7 @@ App.createModule( 'ImageSelect', (function (app) {
 
     return module;
 })(App));
-App.createModule( 'ImageSelect', (function (app) {
+App.createModule( 'PdfSelect', (function (app) {
     
     var module = {};
 
@@ -886,7 +890,8 @@ App.createModule( 'ImageSelect', (function (app) {
 
     $container = $('.js-pdf-input'),
     $text        = $container.find('.input-text'),
-    $input       = $container.find('input'),
+    $input       = $container.find('input[type="file"]'),
+    $holder      = $container.find('.js-filename-holder'),
 
     currentValue;
 
@@ -927,6 +932,10 @@ App.createModule( 'ImageSelect', (function (app) {
 
         })
         .trigger('change');
+
+        $holder.on('change',function () {
+            $text.text($holder.val())
+        }).trigger('change')
 
     }
 

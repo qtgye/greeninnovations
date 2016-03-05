@@ -23,8 +23,8 @@ class Partner extends Model {
     public static $rules = [
         'name' => 'required',
         'description' => 'required',
-        'video_link' => 'url',
-        'url' => 'url',
+        'video_link' => 'valid_url',
+        'url' => 'valid_url',
     ];
 
     public static $plural = 'Partners';

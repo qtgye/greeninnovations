@@ -59,21 +59,21 @@ class Media extends Model {
     }
 
     public static function upload($file, $meta = [])
-    {
-        $uploads_dir = public_path() . '/uploads';
+    {        
+        $uploads_dir = dirname(APP_DIR) . '/uploads/';
         $uploaded = null;       
-        $original_file_name = $file->getClientOriginalName();
-        $size = $file->getSize();   
+        $original_file_name = $file['name'];
+        $size = $file['size'];   
         $unique = md5($original_file_name . time());
         $file_name = $unique . '_' . $original_file_name;
 
-        if ( $file->move($uploads_dir,$file_name) ) {
-
+        if ( move_uploaded_file($file['tmp_name'], $uploads_dir . $file_name) ) {     
             $meta['title'] = !empty($meta['title']) ? $meta['title'] : $original_file_name;
+            $meta['file_type'] = !empty($meta['file_type']) ? $meta['file_type'] : 'other';
             $data = compact('file_name','file_type','size');
             $data = array_merge($data,$meta);
-
             $uploaded = static::create($data);
+            $uploaded->save();
         }
 
         return !is_null( $uploaded ) ? $uploaded : null;
