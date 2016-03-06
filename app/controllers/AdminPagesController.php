@@ -2,7 +2,8 @@
 use core\view,
     core\controller,
     \helpers\url,
-    \helpers\session;
+    \helpers\session,
+    \controllers\AuthController;
 
 /*
  * Welcome controller
@@ -30,6 +31,8 @@ class AdminPagesController extends Controller {
      * Call the parent construct
      */
     public function __construct(){
+
+        AuthController::check_auth();
 
         parent::__construct();
         self::$data['view'] = $this->view;

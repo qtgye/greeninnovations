@@ -189,7 +189,6 @@ abstract class Model extends Controller {
 	{
 		$instance = new static();
 		$result = $instance->_db->select('SELECT * FROM '. PREFIX.$instance->table . ' WHERE '.$key.' = "'.$value.'" LIMIT 1');
-
 		if ( !isset($result[0]) ) {
 			return null;
 		}

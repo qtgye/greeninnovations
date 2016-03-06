@@ -20,9 +20,9 @@ Router::get('news','\controllers\PagesController@news');
 
 
  // Authentication routes...
-Router::get('login', 'Auth\AuthController@getLogin');
-Router::post('login', 'Auth\AuthController@postLogin');
-Router::get('logout', 'Auth\AuthController@getLogout');
+Router::get('login', '\controllers\AuthController@getLogin');
+Router::post('login', '\controllers\AuthController@postLogin');
+Router::get('logout', '\controllers\AuthController@getLogout');
 
 
 // admin routes
