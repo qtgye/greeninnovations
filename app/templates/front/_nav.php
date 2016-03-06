@@ -29,13 +29,31 @@
                 <li><a href="/technologies">Technologies</a></li>
                 <li><a href="/projects">Projects</a></li>
                 <li><a href="/news">News</a></li>
-                <li><a href="javascript://void">Request A Quote</a></li>
+                <li><a href="#requestModal" data-toggle="modal" data-target="#requestModal">Request A Quote</a></li>
             </ul>
             <div class="nav-other">
                 <span><i class="fa fa-phone"></i> <?= $info['phone'] ?></span>
-                <span><a href="mailto:{{ $info['email'] }}"><i class="fa fa-envelope-o"></i> Email us</a></span>
+                <span><a href="mailto:<?= $info['email'] ?>"><i class="fa fa-envelope-o"></i> Email us</a></span>
             </div>
         </div><!-- /.nav --> 
         
     </div><!-- /.container --> 
 </nav><!-- /.nav-wrp -->
+
+<!-- request a quote modal -->
+<div class="modal fade" style="display:none" id="requestModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Request a Quote</h4>
+            </div>
+            <div class="modal-body">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro quisquam at iure non velit dolorum beatae soluta doloribus ea iste, tenetur ducimus amet impedit nisi aspernatur quas est aperiam totam.
+            </div>
+            <div class="modal-footer">
+                <div class="btn btn-defaut" data-dismiss="modal">Cancel</div>
+                <div class="btn btn-info" data-dismiss="modal">Confirm</div>
+            </div>
+        </div>
+    </div>
+</div>
