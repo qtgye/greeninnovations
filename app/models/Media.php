@@ -69,7 +69,7 @@ class Media extends Model {
 
         if ( move_uploaded_file($file['tmp_name'], $uploads_dir . $file_name) ) {     
             $meta['title'] = !empty($meta['title']) ? $meta['title'] : $original_file_name;
-            $meta['file_type'] = !empty($meta['file_type']) ? $meta['file_type'] : 'other';
+            $meta['file_type'] = !empty($meta['file_type']) ? $meta['file_type'] : self::get_file_type($original_file_name);
             $data = compact('file_name','file_type','size');
             $data = array_merge($data,$meta);
             $uploaded = static::create($data);
@@ -78,6 +78,26 @@ class Media extends Model {
 
         return !is_null( $uploaded ) ? $uploaded : null;
 
+    }
+
+    public static function get_file_type ($filename)
+    {
+        if ( preg_match('/[.](jpg|jpeg|png|gif|bmp|ico)$/i', $filename) ) {
+            return 'image';
+        }
+        else if ( preg_match('/[.](mp4|mpeg|avi|mov|3gp|wmv|mkv)$/i', $filename) ) {
+            return 'video';
+        }
+        else if ( preg_match('/[.](wav|mp3|wma)$/i', $filename) ) {
+            return 'audio';
+        }
+        else if ( preg_match('/[.](doc|docx|txt)$/i', $filename) ) {
+            return 'document';
+        }
+        else if ( preg_match('/[.](pdf)$/i', $filename) ) {
+            return 'pdf';
+        }
+        return 'other';
     }
 
 

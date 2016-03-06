@@ -18,7 +18,7 @@
             <img class="list-thumbnail thumbnail-small"src="/app/templates/admin/images/<?= $item->file_type ?>.png" title="<?= $item->title ?>" alt="">
         <?php endif ?>
     </td>
-    <td class="text-overflow center-text"><?= $item->title ?></td>
+    <td class="wide center-text"><?= $item->title ?></td>
     <td class=""><?= $item->file_type ?></td>
     <td class="">
         <div class="btn-group form-actions">

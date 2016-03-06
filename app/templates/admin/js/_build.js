@@ -143,6 +143,7 @@ App.createModule( 'Upload', (function (app) {
         _file.name          = file.name;
         _file.size          = file.size;
         _file.mimeType      = file.mimeType;
+        _file.type          = getFileType(file);
         _file.originalFile  = file;
         _file.$element      = $fileTemplate.clone();
         _file.isUploadSuccess = false;
@@ -207,14 +208,20 @@ App.createModule( 'Upload', (function (app) {
          */
         function upload ( uploadDone ) {
 
-            var formData = new FormData();
+            var formData = new FormData(),
+                fileData = {
+                    file_type : _file.type
+                };
             formData.append('file',_file.originalFile);
+            formData.append('file_data',fileData);
             formData.append('_token',token);
+            formData.append('method','UPLOAD');
             _file.$element.addClass('is-uploading');
             request = $.ajax({
                 url : app.routes.fileUpload,
                 type : 'POST',
                 data : formData,
+                dataType : 'json',
                 processData : false, // Don't process the files
                 contentType : false, // Set content type to false as jQuery will tell the server its a query string request
                 xhr: function () {
@@ -268,7 +275,7 @@ App.createModule( 'Upload', (function (app) {
 
         // DOM update
 
-        var filetype = getFileType(_file.originalFile);
+        var filetype = _file.type;
         if ( filetype == 'image' ) {
             $image.attr('src',_file.dataURL);
         }
@@ -368,7 +375,9 @@ App.createModule( 'Upload', (function (app) {
     function clear () {
         $input.val('');
         fileObjects.forEach(function ( _fileObject ) {
-            _fileObject.remove();
+            if ( _fileObject && isFunction(_fileObject.remove) ) {
+                _fileObject.remove();
+            }
         });
         fileObjectsMap = {};
         fileObjects = [];
