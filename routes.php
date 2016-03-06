@@ -48,6 +48,7 @@ Router::post('/admin/project','\controllers\ProjectsController@store');
 Router::post('/admin/info','\controllers\InfosController@update');
 
 // ajax
+Router::get('/api/get_upload_limit', '\controllers\AdminPagesController@get_upload_limit');
 Router::any('/api/media', '\controllers\MediaController@ajax');
 Router::any('/api/info', '\controllers\InfosController@ajax');
 Router::any('/api/(:any)', '\controllers\AdminPagesController@ajax');
@@ -56,8 +57,6 @@ Router::any('/api/(:any)', '\controllers\AdminPagesController@ajax');
 // Router::any('/api/news', '\controllers\NewsController@ajax');
 // Router::any('/api/project', '\controllers\ProjectsController@ajax');
 // Router::any('/api/info', '\controllers\InfosController@ajax');
-Router::post('get_upload_limit', '\controllers\AdminPagesController@get_upload_limit');
-
 //if no route found
 Router::error('\core\error@index');
 

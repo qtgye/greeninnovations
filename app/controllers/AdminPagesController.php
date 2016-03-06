@@ -83,7 +83,7 @@ class AdminPagesController extends Controller {
             'model_plural'  => $model::$plural,
             'subpage'       => 'update',
             'subpage_title' => 'Update',
-            'submit_text'   => 'Create',
+            'submit_text'   => $model_name != 'media' ? 'Create' : null,
             'method'        => 'create',
         ]);
 
@@ -145,12 +145,15 @@ class AdminPagesController extends Controller {
 
     public function info ()
     {
-        exit;
+        global $input;
 
         $infos = [];
         foreach (\models\Info::all() as $item) {
             $infos[ $item->name ] = $item->value;
         }
+
+        $infos = array_merge($infos,$input->all());
+        $input->update($infos);
 
         $model = '\models\Info';
         self::update_page_data('info');
@@ -158,8 +161,7 @@ class AdminPagesController extends Controller {
         $data = array_merge( self::$data, [
             'method' => 'edit',
             'model_plural' => $model::$plural,
-            'submit_text' => 'Save',
-            'items' => $infos,
+            'submit_text' => 'Save'
         ]);
 
         View::rendertemplate('page', $data);
@@ -202,7 +204,7 @@ class AdminPagesController extends Controller {
         exit;
     }
 
-    public function get_upload_limit(Request $request)
+    public function get_upload_limit()
     {
         $response = [
             'success' => false,
@@ -220,7 +222,8 @@ class AdminPagesController extends Controller {
             'data' => compact( 'post_max_size',  'upload_max_filesize')
         ]);
 
-        return json_encode($response);
+        echo json_encode($response);
+        exit;
     }
 
     /**

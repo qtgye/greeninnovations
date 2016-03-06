@@ -148,7 +148,7 @@ App.createModule( 'Upload', (function (app) {
         _file.isUploadSuccess = false;
         _file.isUploadDone  = false;
 
-        var $image      = _file.$element.find('.thumbnail-image'),
+        var $image      = _file.$element.find('.thumbnail-image').eq(0),
             $progress   = _file.$element.find('.js-preview-progress'),
             $text       = _file.$element.find('.preview-text'),
             $error      = _file.$element.find('.preview-error'),
@@ -268,11 +268,12 @@ App.createModule( 'Upload', (function (app) {
 
         // DOM update
 
-        if ( _file.type == 'image' ) {
+        var filetype = getFileType(_file.originalFile);
+        if ( filetype == 'image' ) {
             $image.attr('src',_file.dataURL);
         }
         $text.text(_file.name);
-        _file.$element.addClass('filetype-'+_file.type);
+        _file.$element.addClass('filetype-'+filetype);
 
         // Binds
 
@@ -378,7 +379,7 @@ App.createModule( 'Upload', (function (app) {
     function getUploadLimit () {
         $.ajax({
             url : '/api/get_upload_limit',
-            type : 'POST',
+            type : 'GET',
             data : {
                 _token : token
             },

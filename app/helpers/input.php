@@ -15,13 +15,12 @@ class Input {
 
     public function __construct()
     { 
-        if ( $_POST ) {
+        if ( !empty($_POST) ) {
             $this->input = $_POST;
             if ( isset($_FILES) ) {
                 $this->input['files'] = $_FILES;
             }
-            Session::set('input',$this->input);
-            
+            Session::set('input',$this->input);            
         } else {
             $session_input = Session::get('input');
             $this->input = $session_input ? $session_input : [];
@@ -76,7 +75,8 @@ class Input {
     public function update ($assoc)
     {
         if ( is_array($assoc) ) {
-            $this->input = $assoc;
+            $this->input = array_merge($this->input,$assoc);
+            Session::set('input',$this->input);
         }        
     }
 

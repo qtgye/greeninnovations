@@ -185,6 +185,25 @@ abstract class Model extends Controller {
 		return null;
 	}
 
+	public static function findWhere ( $key, $value )
+	{
+		$instance = new static();
+		$result = $instance->_db->select('SELECT * FROM '. PREFIX.$instance->table . ' WHERE '.$key.' = "'.$value.'" LIMIT 1');
+
+		if ( !isset($result[0]) ) {
+			return null;
+		}
+
+		if ( isset($result[0]) ) {
+			$found = get_object_vars($result[0]);
+			$new = static::create($found);
+			$new->id = $found['id'];
+			return $new;
+		}
+
+		return null;
+	}
+
 	/**
 	 * creates an instance of the model according to the data
 	 * @param  array $data the data to be filled
