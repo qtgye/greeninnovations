@@ -32,7 +32,7 @@ class AdminPagesController extends Controller {
      */
     public function __construct(){
 
-        // AuthController::check_auth();
+        AuthController::check_auth();
 
         parent::__construct();
         self::$data['view'] = $this->view;
