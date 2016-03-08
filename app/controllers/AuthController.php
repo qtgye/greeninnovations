@@ -31,7 +31,7 @@ class AuthController extends Controller {
         if ( isset($_POST['email']) && isset($_POST['password']) ) {
             $user = ['nyahaha'];// User::findWhere('email',$_POST['email']);
             $user2 = User::find(1);
-            var_dump($user);
+            var_dump($user2);
             exit;
             if ( $user && $user->password == $_POST['password'] ) {
                 var_dump('setting session');
