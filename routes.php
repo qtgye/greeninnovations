@@ -21,16 +21,7 @@ Router::get('news','\controllers\PagesController@news');
 
  // Authentication routes...
 Router::get('login', '\controllers\AuthController@getLogin');
-// Router::post('login', '\controllers\AuthController@postLogin');
-Router::post('login', function ()
-{
-    echo '<pre style="display: table; font-size: 10px">';
-        var_dump('TEST');
-    echo '</pre>';
-    echo '<pre style="display: table; font-size: 10px">';
-        var_dump($_POST);
-    echo '</pre>';
-});
+Router::post('login', '\controllers\AuthController@postLogin');
 Router::get('logout', '\controllers\AuthController@getLogout');
 
 

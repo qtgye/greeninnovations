@@ -49,10 +49,14 @@ class AuthController extends Controller {
 
     public static function check_auth () {
 
-        if ( !Session::get('user') ) 
-        {
-            Url::redirect('/login',true);
-        }
+        echo '<pre style="display: table; font-size: 10px">';
+            var_dump(Session::get('user'));
+        echo '</pre>';
+
+        // if ( !Session::get('user') ) 
+        // {
+        //     Url::redirect('/login',true);
+        // }
 
     }
 }
