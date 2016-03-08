@@ -33,7 +33,7 @@ class AuthController extends Controller {
             // var_dump($user);
             // var_dump(method_exists(User, 'find'));
             // var_dump(method_exists(Info, 'find'));
-            $info = Info::find(1);
+            $info = User::find(1);
             var_dump($info);
             var_dump('should have shown info');
             exit;
