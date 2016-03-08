@@ -27,7 +27,10 @@ class AuthController extends Controller {
 
     public function postLogin()
     {
-        global $errors;
+        // global $errors;
+        echo '<pre style="display: table; font-size: 10px">';
+            var_dump('TEST');
+        echo '</pre>';
         if ( isset($_POST['email']) && isset($_POST['password']) ) {
             $user = User::findWhere('email',$_POST['email']);
             if ( $user && $user->password == $_POST['password'] ) {
