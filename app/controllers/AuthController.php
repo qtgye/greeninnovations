@@ -32,7 +32,7 @@ class AuthController extends Controller {
             $user = ['nyahaha'];// User::findWhere('email',$_POST['email']);
             var_dump($user);
             var_dump(method_exists(User, 'find'));
-            var_dump(property_exists(User, 'fillable'));
+            var_dump(property_exists(Info, 'fillable'));
             $user2 = User::find(1);
             var_dump($user);
             var_dump('should have shown user2');
