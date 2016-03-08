@@ -164,16 +164,12 @@ abstract class Model extends Controller {
 
 	public static function find ($id = null)
 	{
-		var_dump('finding user');
 		if ( !$id ) {
 			return null;
 		}
 
-		var_dump('creating instance');
 		$instance = new static();
-		var_dump($instance);
 		$result = $instance->_db->select('SELECT * FROM '. PREFIX.$instance->table . ' WHERE id = :id LIMIT 1',[ ':id' => $id] );
-		var_dump($result);
 
 		if ( !isset($result[0]) ) {
 			return null;
