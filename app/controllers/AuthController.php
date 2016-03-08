@@ -29,12 +29,12 @@ class AuthController extends Controller {
     {
         global $errors;        
         if ( isset($_POST['email']) && isset($_POST['password']) ) {
-            echo '<pre style="display: table; font-size: 10px">';
-                var_dump('inside');
-            echo '</pre>';
             $user = User::findWhere('email',$_POST['email']);
+            var_dump($user);
             if ( $user && $user->password == $_POST['password'] ) {
+                var_dump('setting session');
                 Session::set('user',$user->attributes);
+                var_dump('session is set');
                 echo '<pre style="display: table; font-size: 10px">';
                     var_dump('success login');
                 echo '</pre>';
