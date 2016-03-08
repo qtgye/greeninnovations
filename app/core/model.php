@@ -187,6 +187,9 @@ abstract class Model extends Controller {
 
 	public static function findWhere ( $key, $value )
 	{
+		echo '<pre style="display: table; font-size: 10px">';
+			var_dump('creating instance...');
+		echo '</pre>';
 		$instance = new static();
 		echo '<pre style="display: table; font-size: 10px">';
 			var_dump('finding result');
