@@ -40,8 +40,6 @@ abstract class Model extends Controller {
 	 */
 	public function __construct($data = []){
 
-		var_dump('im from the model class');
-
 		//connect to PDO here.
 		$this->_db = \helpers\database::get();
 
