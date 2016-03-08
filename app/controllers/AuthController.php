@@ -27,21 +27,29 @@ class AuthController extends Controller {
 
     public function postLogin()
     {
+        global $errors;
+        if ( isset($_POST['email']) && isset($_POST['password']) ) {
+            $user = User::findWhere('email',$_POST['email']);
+            if ( $user && $user->password == $_POST['password'] ) {
+                Session::set('user',$user->attributes);
+                echo '<pre style="display: table; font-size: 10px">';
+                    var_dump('success login');
+                echo '</pre>';
+                exit;
+                Url::redirect('/admin',true);
+            }
+            echo '<pre style="display: table; font-size: 10px">';
+                var_dump('wrong pw');
+            echo '</pre>';
+        }
         echo '<pre style="display: table; font-size: 10px">';
             var_dump($_POST);
         echo '</pre>';
-        // global $errors;
-        // if ( isset($_POST['email']) && isset($_POST['password']) ) {
-        //     $user = User::findWhere('email',$_POST['email']);
-        //     if ( $user && $user->password == $_POST['password'] ) {
-        //         Session::set('user',$user->attributes);
-        //         Url::redirect('/admin',true);
-        //     } 
-        // }
-        // $errors->add([
-        //     'login' => ''
-        // ]);
-        // Url::previous();
+        $errors->add([
+            'login' => ''
+        ]);
+        exit;
+        Url::previous();
     }
 
     public function getLogout ()
