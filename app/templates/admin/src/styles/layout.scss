@@ -7,9 +7,10 @@ body {
 #container {
     display: block;
     margin: auto;
+    overflow-x: hidden;
 
-    @include breakpoint(large) {
-        width: 1024px;
+    @include breakpoint(medium) {
+        width: map-get($breakpoint,medium);
     }
 }
 
@@ -26,5 +27,30 @@ ol.breadcrumb {
     a:active, a:link,
     a:visited {
         color: inherit;
+    }
+}
+
+
+
+#main-content {
+    margin-left: 0;
+    background-color: palette(white);
+    max-width: none;
+    position: relative;
+    z-index: 5;
+    left: 0;
+    transition: left .3s ease;
+
+    @include breakpoint(medium) {
+        width: 782px;
+        float: right;
+    }
+
+    .sidebar-visible & {
+        left: 210px;
+        
+        @include breakpoint(medium) {
+            left: 0;
+        }
     }
 }

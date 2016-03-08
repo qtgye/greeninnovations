@@ -213,7 +213,6 @@ App.createModule( 'Upload', (function (app) {
                     file_type : _file.type
                 };
             formData.append('file',_file.originalFile);
-            formData.append('file_data',fileData);
             formData.append('_token',token);
             formData.append('method','UPLOAD');
             _file.$element.addClass('is-uploading');
@@ -1038,6 +1037,63 @@ App.createModule( 'ImageSelect', (function (app) {
      */
     module.init = function () {
         bindConditionalInput();
+    };
+
+    return module;
+})(App));
+App.createModule( 'SidebarToggle', (function (app) {
+    
+
+
+    var module = {};
+
+
+
+    /**
+     * Private variables
+     */    
+    
+    var 
+
+    $body   = $('body'),
+    $toggle = $('.js-sidebar-toggle');
+
+
+
+
+    /**
+     * Private functions
+     */
+    
+    function bindSidebarToggle () {
+        
+        $toggle.on('click',function (e) {
+            
+            e.preventDefault();
+            $body.toggleClass('sidebar-visible');
+
+        });
+
+    }
+    
+    
+
+
+
+    /**
+     * API
+     */
+
+
+
+    /**
+     * Init
+     * @return void
+     */
+    module.init = function () {
+        if ( $toggle.length ) {
+            bindSidebarToggle();
+        }
     };
 
     return module;

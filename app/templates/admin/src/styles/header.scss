@@ -8,9 +8,28 @@ header.header {
     display: block;        
 
     @include breakpoint(medium) {
-        width: 1024px;
+        width: map-get($breakpoint,medium);
         margin: auto;
     };
+}
+
+
+
+.burger-row {
+    margin-left: 0;
+
+    .fa-bars {
+        .sidebar-visible & {
+            display: none;
+        }
+    }
+
+    .fa-times {
+        display: none;
+        .sidebar-visible & {
+            display: block;
+        }
+    }
 }
 
 

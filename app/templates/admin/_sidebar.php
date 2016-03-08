@@ -1,5 +1,5 @@
 <!-- sidebar start-->
-  <aside class="col-md-2 clearfix">
+  <aside class="clearfix">
       <div id="sidebar"  class="n">
           <!-- sidebar menu start-->
 

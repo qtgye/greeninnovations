@@ -81,39 +81,46 @@ img.list-thumbnail {
 
 
 .form-actions {
-    transition: all .3s ease;
-    opacity: 0;
-
-    .list-row:hover & {
-        opacity: 1;        
-    }
+    transition: all .3s ease;    
 
     .btn-success,
     .btn-danger {
         position: relative;
-        transition: all .3s ease;
-        background-color: transparent;
-        border-color: transparent;
-        color: palette(gray,dark);
-    }
+        transition: all .3s ease;        
+        left: 0;
 
-    .btn-success {
-        left: -10px;
-
-        &:hover {
-            background-color: palette(green,dark) !important;
-            border-color: palette(green,dark);
-            color: palette(white);
+        @include breakpoint(large) {
+            background-color: transparent;
+            border-color: transparent;
+            color: palette(gray,dark);
         }
     }
 
-    .btn-danger {
-        left: 10px;
+    @include breakpoint(large) {
+        opacity: 0;
 
-        &:hover {
-            background-color: palette(red) !important;
-            border-color: palette(red);
-            color: palette(white);
+        .list-row:hover & {
+            opacity: 1;        
+        }
+
+        .btn-success {
+            left: -10px;
+
+            &:hover {
+                background-color: palette(green,dark) !important;
+                border-color: palette(green,dark);
+                color: palette(white);
+            }
+        }
+
+        .btn-danger {
+            left: 10px;
+
+            &:hover {
+                background-color: palette(red) !important;
+                border-color: palette(red);
+                color: palette(white);
+            }
         }
     }
 }

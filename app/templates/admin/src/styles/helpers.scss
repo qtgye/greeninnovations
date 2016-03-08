@@ -40,9 +40,10 @@
 
 // mobile-first (min-width) breakpoint sizes
 $breakpoint : (
-    'narrow' : 320,
-    'medium' : 768,
-    'large'  : 1024
+    'extra-small'   : 0px,
+    'small'         : 768px,
+    'medium'        : 992px,
+    'large'         : 1024px
 );
 
 // color palettes
@@ -84,8 +85,7 @@ $colors : (
 // -------------------------------------------
 
 @mixin breakpoint( $size ) {
-    $px : map-get( $breakpoint, $size );
-    @media (min-width : #{$px}px ) {
+    @media (min-width : map-get( $breakpoint, $size ) ) {
         @content
     }
 };

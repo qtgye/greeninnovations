@@ -18,7 +18,8 @@
                 "list",
                 "imageSelect",
                 "pdfSelect",
-                "conditionalInput"
+                "conditionalInput",
+                "sidebarToggle"
             ]
         }
 

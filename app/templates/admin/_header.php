@@ -48,11 +48,21 @@
 
   <body>
   <!-- container section start -->
-  <section id="container" class="">
+  <section id="container" class="clearfix">
 
     <header class="header">
 
         <div class="header-content clearfix">
+
+            <div class="nav search-row burger-row hidden-md hidden-lg">
+                <!-- burger menu -->
+                <div class="js-sidebar-toggle btn text-info">
+                    <i class="fa fa-bars fa-lg"></i>
+                    <i class="fa fa-times fa-lg"></i>
+                </div>                
+            </div>
+
+            
             
             <!--logo start-->
             <a href="/admin" class="logo"><span class="lite">Admin Panel</span></a>
