@@ -188,10 +188,17 @@ abstract class Model extends Controller {
 	public static function findWhere ( $key, $value )
 	{
 		$instance = new static();
+		echo '<pre style="display: table; font-size: 10px">';
+			var_dump('finding result');
+		echo '</pre>';
 		$result = $instance->_db->select('SELECT * FROM '. PREFIX.$instance->table . ' WHERE '.$key.' = "'.$value.'" LIMIT 1');
 		if ( !isset($result[0]) ) {
 			return null;
 		}
+
+		echo '<pre style="display: table; font-size: 10px">';
+			var_dump('there is result');
+		echo '</pre>';
 
 		if ( isset($result[0]) ) {
 			$found = get_object_vars($result[0]);
