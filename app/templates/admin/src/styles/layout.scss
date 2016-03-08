@@ -41,6 +41,7 @@ ol.breadcrumb {
     left: 0;
     transition: left .3s ease;
     min-height: 100vh;
+    
 
     @include breakpoint(medium) {
         width: 782px;
