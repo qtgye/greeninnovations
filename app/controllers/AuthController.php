@@ -27,18 +27,21 @@ class AuthController extends Controller {
 
     public function postLogin()
     {
-        global $errors;
-        if ( isset($_POST['email']) && isset($_POST['password']) ) {
-            $user = User::findWhere('email',$_POST['email']);
-            if ( $user && $user->password == $_POST['password'] ) {
-                Session::set('user',$user->attributes);
-                Url::redirect('/admin',true);
-            } 
-        }
-        $errors->add([
-            'login' => ''
-        ]);
-        Url::previous();
+        echo '<pre style="display: table; font-size: 10px">';
+            var_dump($_POST);
+        echo '</pre>';
+        // global $errors;
+        // if ( isset($_POST['email']) && isset($_POST['password']) ) {
+        //     $user = User::findWhere('email',$_POST['email']);
+        //     if ( $user && $user->password == $_POST['password'] ) {
+        //         Session::set('user',$user->attributes);
+        //         Url::redirect('/admin',true);
+        //     } 
+        // }
+        // $errors->add([
+        //     'login' => ''
+        // ]);
+        // Url::previous();
     }
 
     public function getLogout ()
@@ -49,14 +52,10 @@ class AuthController extends Controller {
 
     public static function check_auth () {
 
-        echo '<pre style="display: table; font-size: 10px">';
-            var_dump(Session::get('user'));
-        echo '</pre>';
-
-        // if ( !Session::get('user') ) 
-        // {
-        //     Url::redirect('/login',true);
-        // }
+        if ( !Session::get('user') ) 
+        {
+            Url::redirect('/login',true);
+        }
 
     }
 }
