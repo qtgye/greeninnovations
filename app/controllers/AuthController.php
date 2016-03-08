@@ -31,30 +31,17 @@ class AuthController extends Controller {
         if ( isset($_POST['email']) && isset($_POST['password']) ) {
             $user = ['nyahaha'];// User::findWhere('email',$_POST['email']);
             $user2 = User::find(1);
-            var_dump($user2);
+            var_dump($user);
             var_dump('should have shown user2');
             exit;
             if ( $user && $user->password == $_POST['password'] ) {
-                var_dump('setting session');
                 Session::set('user',$user->attributes);
-                var_dump('session is set');
-                echo '<pre style="display: table; font-size: 10px">';
-                    var_dump('success login');
-                echo '</pre>';
-                exit;
                 Url::redirect('/admin',true);
             }
-            echo '<pre style="display: table; font-size: 10px">';
-                var_dump('wrong pw');
-            echo '</pre>';
         }
-        echo '<pre style="display: table; font-size: 10px">';
-            var_dump($_POST);
-        echo '</pre>';
         $errors->add([
             'login' => ''
         ]);
-        exit;
         Url::previous();
     }
 
