@@ -4,7 +4,7 @@ use core\view,
     \helpers\url,
     \models\Info,
     \helpers\session,
-    \models\user;
+    \models\User;
 
 /*
  * Welcome controller
