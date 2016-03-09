@@ -57,11 +57,11 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-10 pull-right">
+                <div class="col-xs-12 col-sm-10 pull-right">
                     <div class="row">
                         
                         <!-- PHONE -->
-                        <div class="col-md-6 <?= $errors->has('phone') ? 'has-error' : '' ?>">
+                        <div class="col-sm-6 <?= $errors->has('phone') ? 'has-error' : '' ?>">
                           <label class="control-label" for="info_phone">Phone<span class="required">*</span></label>
                           <?= Form::input([
                               'type' => 'text',
@@ -77,7 +77,7 @@
                         </div>
 
                         <!-- FAX -->
-                        <div class="col-md-6 <?= $errors->has('fax') ? 'has-error' : '' ?>">
+                        <div class="col-sm-6 <?= $errors->has('fax') ? 'has-error' : '' ?>">
                           <label class="control-label" for="info_fax">Fax</label>
                           <?= Form::input([
                               'type' => 'text',
@@ -179,8 +179,8 @@
                 
             <!-- LOGO -->
             <div class="form-group <?= $errors->has('logo') ? 'has-error' : '' ?> form-image-input js-image-input">
-                <label class="control-label col-lg-2" for="info_logo">Logo <span class="required">*</span></label>
-                <div class="col-lg-10">
+                <label class="control-label col-xs-2" for="info_logo">Logo <span class="required">*</span></label>
+                <div class="col-xs-10">
                   <div class="input-thumbnail">
                     <img src="" alt="" class="input-image">
                     <br><br>
@@ -211,8 +211,8 @@
 
             <!-- FAVICON -->
             <div class="form-group <?= $errors->has('favicon') ? 'has-error' : '' ?> form-image-input js-image-input">
-                <label class="control-label col-lg-2" for="info_favicon">Favicon <span class="required">*</span></label>
-                <div class="col-lg-10">
+                <label class="control-label col-xs-2" for="info_favicon">Favicon <span class="required">*</span></label>
+                <div class="col-xs-10">
                   <div class="input-thumbnail">
                     <img src="" alt="" class="input-image">
                     <br><br>
