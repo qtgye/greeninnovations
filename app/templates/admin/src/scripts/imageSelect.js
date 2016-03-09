@@ -258,9 +258,11 @@ App.createModule( 'ImageSelect', (function (app) {
             if ( !(file instanceof File) ) return;
 
             var formData = new FormData();
-                formData.append('file',file);
-                formData.append('file_type',getFileType(file));
-                formData.append('_token',token);
+
+            formData.append('file',file);
+            formData.append('file_type',getFileType(file));
+            formData.append('_token',token);
+            formData.append('method','UPLOAD');
 
             request = $.ajax({
                 url  : app.routes.fileUpload,

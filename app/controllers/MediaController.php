@@ -38,7 +38,7 @@ class MediaController extends Controller {
                 ],
             ]);
             return $response;
-        }        
+        } 
 
         // upload file and save to db
         $data = $input->all();
@@ -125,10 +125,15 @@ class MediaController extends Controller {
                     'success' => true,
                     'data' => $media->toArray(),                    
                 ]);
+            } else {
+                $response['data'] = [
+                    'message' => 'The file was not uploaded due to some error.'
+                ];
             }
-
-            echo json_encode($response);
-            exit;
+        } else {
+            $response['data'] = [
+                'message' => 'Unknown method for this POST request'
+            ];
         }
 
         echo json_encode($response);
