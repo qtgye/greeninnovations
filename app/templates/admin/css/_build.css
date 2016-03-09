@@ -632,6 +632,11 @@ img.list-thumbnail.thumbnail-small {
     color: #fff;
   }
 }
+.form-actions-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 .c-image-select.is-uploading {
   pointer-events: none;
@@ -656,6 +661,7 @@ img.list-thumbnail.thumbnail-small {
 }
 .image-select-item .panel-body {
   height: 150px;
+  overflow: visible;
 }
 
 .image-select-thumbnail {
@@ -668,10 +674,12 @@ img.list-thumbnail.thumbnail-small {
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
 }
-.image-select-thumbnail:hover {
-  -webkit-transform: scale(2);
-          transform: scale(2);
-  z-index: 999;
+@media (min-width: 1024px) {
+  .c-image-select .image-select-thumbnail:hover {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    z-index: 999;
+  }
 }
 
 .image-select-image {
