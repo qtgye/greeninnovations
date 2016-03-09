@@ -15,6 +15,10 @@
           transform: translate(-50%, -50%);
 }
 
+.text-left {
+  text-align: left !important;
+}
+
 .form-panel-heading {
   background-color: #6086FF;
   color: #fff;

@@ -102,3 +102,14 @@ $colors : (
     }
     @return $output;
 };
+
+
+
+
+// -------------------------------------------
+// Helper Classes
+// -------------------------------------------
+
+.text-left {
+    text-align: left !important;
+}
