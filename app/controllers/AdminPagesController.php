@@ -68,6 +68,7 @@ class AdminPagesController extends Controller {
                         'method' => 'all',
                         'page_title' => ucfirst($model::$plural),
                         'model_plural' => $model::$plural,
+                        'delete_confirm_modal' => true,
                         'items' => $model::all()
                     ]);
             View::rendertemplate('page', $data);

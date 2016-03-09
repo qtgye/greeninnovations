@@ -37,9 +37,4 @@
       </div>
   </section>
 
-  <?php if ($has_image_modal): ?>
-      <?php $view::rendertemplate('partials/form-image-input-modal',$data) ?>
-  <?php endif ?>
-  
-
 </div>

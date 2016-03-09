@@ -1,3 +1,14 @@
+  <?php
+
+    if ($has_image_modal) {
+      $view::rendertemplate('partials/form-image-input-modal',$data);
+    } 
+
+    if ( $delete_confirm_modal ) {
+      $view::rendertemplate('partials/delete-confirm-modal',$data);
+    }
+
+  ?>
 
   </section>
   <!-- container section end -->
