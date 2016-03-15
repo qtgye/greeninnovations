@@ -17,6 +17,34 @@
   </div>
 </div>
 
+<!-- THUMBNAIL -->
+<div class="form-group form-image-input js-image-input">
+    <label class="control-label col-lg-2" for="news_image">Thumbnail</label>
+    <div class="col-lg-10">
+      <div class="input-thumbnail">
+        <img src="" alt="" class="input-image">
+        <br><br>
+      </div>
+      <?= Form::input([
+          'type' => 'text',
+          'name' => 'image',
+          'id' => 'news_image',
+          'class' => 'hidden',
+          'value' => $input->get('image')
+      ]) ?>
+      <div>
+        <div class="btn btn-default js-image-input-btn" data-toggle="modal">
+          <span class="select">
+            Select Image
+          </span>
+          <span class="replace">
+            Replace Image
+          </span>
+        </div>
+      </div>      
+    </div>    
+</div>
+
 <!-- CONTENT -->
 <div class="form-group <?= $errors->has('content') ? 'has-error' : '' ?>">
     <label class="control-label col-lg-2" for="content_news">Content <span class="required">*</span></label>

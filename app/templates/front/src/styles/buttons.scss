@@ -1,0 +1,19 @@
+.btn {
+    font-weight: lighter;
+
+    &.btn-outline {
+        background-color: transparent;
+        border-width: 1px;
+        border-style: solid;
+
+        &.btn-success {
+            border-color: palette(green);
+            color: palette(green);
+
+            &:hover {
+                border-color: palette(green,dark);
+                color: palette(green,dark);
+            }
+        }
+    }
+}

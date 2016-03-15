@@ -1,0 +1,24 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .flex-content {
+
+    }   
+}
+
+.font-title {
+    font-family: 'Raleway',sans-serif;
+}
+
+.bg-silver {
+    background-color: palette(gray);
+}
+
+.text- {
+    
+    &left {
+        text-align: left !important;
+    }
+}

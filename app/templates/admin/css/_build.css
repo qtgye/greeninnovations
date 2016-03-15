@@ -19,6 +19,10 @@
   text-align: left !important;
 }
 
+.bg-silver {
+  background-color: #DDD;
+}
+
 .form-panel-heading {
   background-color: #6086FF;
   color: #fff;

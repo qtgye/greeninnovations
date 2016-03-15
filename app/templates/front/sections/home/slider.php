@@ -1,5 +1,5 @@
 <!-- Slider -->
-<section class="slider-section slider-section-1">
+<section id="homepage_carousel" class="slider-section slider-section-1">
     
     <div class="carousel-widget ctrl-1" id="carousel-widget" data-items="1" data-itemrange="false" data-tdrag="false" data-mdrag="false" data-pdrag="false" data-autoplay="true" data-loop="true" data-nav="true">
 
@@ -18,7 +18,7 @@
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod<br>
                             tempor invidunt ut labore et dolore magna aliquyam erat.
                         </p>
-                        <a href="#" class="btn btn-line light btn-sm">Learn more</a>
+                        <a href="#" class="btn btn-success">Learn more</a>
                     </div>
                 </div><!-- /.container -->
             </div><!-- /.item -->
@@ -36,7 +36,7 @@
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod<br>
                             tempor invidunt ut labore et dolore magna aliquyam erat.
                         </p>
-                        <a href="#" class="btn btn-line light btn-sm">Learn more</a>
+                        <a href="#" class="btn btn-success">Learn more</a>
                     </div>
                 </div><!-- /.container -->
             </div><!-- /.item -->

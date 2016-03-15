@@ -192,10 +192,34 @@
                       'class' => 'hidden',
                       'value' => $input->get('logo')
                   ]) ?>
-                  <!-- {!! Form::text('logo', isset( $infos['logo'] ) ? $infos['logo'] : '',[
-                      'id' => 'product_image',
+                  <div>
+                    <div class="btn btn-default js-image-input-btn">
+                      <span class="select">
+                        Select Image
+                      </span>
+                      <span class="replace">
+                        Replace Image
+                      </span>
+                    </div>
+                  </div>      
+                </div>    
+            </div>
+
+            <!-- LOGO WHITE -->
+            <div class="form-group <?= $errors->has('logo') ? 'has-error' : '' ?> form-image-input js-image-input">
+                <label class="control-label col-xs-2" for="info_logo_white">Logo White<span class="required">*</span></label>
+                <div class="col-xs-10">
+                  <div class="input-thumbnail bg-silver">
+                    <img src="" alt="" class="input-image">
+                    <br><br>
+                  </div>
+                  <?= Form::input([
+                      'type' => 'text',
+                      'name' => 'logo_white',
+                      'id' => 'info_logo_white',
                       'class' => 'hidden',
-                  ]) !!}    -->
+                      'value' => $input->get('logo_white')
+                  ]) ?>
                   <div>
                     <div class="btn btn-default js-image-input-btn">
                       <span class="select">
@@ -224,10 +248,6 @@
                       'class' => 'hidden',
                       'value' => $input->get('favicon')
                   ]) ?>
-                  <!-- {!! Form::text('favicon', isset( $infos['favicon'] ) ? $infos['favicon'] : '',[
-                      'id' => 'product_image',
-                      'class' => 'hidden',
-                  ]) !!}    -->
                   <div>
                     <div class="btn btn-default js-image-input-btn">
                       <span class="select">

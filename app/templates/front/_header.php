@@ -10,9 +10,9 @@
     <!--pageMeta-->
 
     <!-- Lib CSS -->
-    <link href="//fonts.googleapis.com/css?family=Rancho|Open+Sans:400,300,300italic,400italic,600,600italic,700,800italic,700italic,800" rel="stylesheet">
     <link href="/app/templates/front/minify/rgen_min.css" rel="stylesheet">
     <link href="/app/templates/front/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://npmcdn.com/flickity@1.1/dist/flickity.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/app/templates/front/css/_build.css">

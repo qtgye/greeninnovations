@@ -1,0 +1,24 @@
+.carousel {
+    white-space: nowrap;
+    position: relative;
+    height: 600px;
+
+    .item {
+        width: 100%;
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .flickity-prev-next-button {
+        background-color: transparent;
+        opacity: 1;
+    }
+        button[disabled] {
+            opacity: .2;
+        }
+
+        .arrow {
+            fill: white;
+        }
+}

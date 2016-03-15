@@ -2,7 +2,7 @@
 
 use \core\View;
 
-foreach ( [ 'slider', 'about-us', 'video', 'products' ] as $file ) {
+foreach ( [ 'slider', 'about-us', 'services', 'products', 'news' ] as $file ) {
     View::rendertemplate('sections/home/'.$file, $data);
 }
 

@@ -1,4 +1,53 @@
-section {
-    padding-top: 50px;
-    padding-bottom: 50px;
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+    border-radius: 3px;
+    
+    .btn-success {
+        background-color: palette(green);
+        color: white;
+    }
+
+}
+
+.text-success {
+    color: palette(green);
+}
+
+hr {
+    width: 200px;
+    border-bottom: 3px solid palette(green);
+    margin: 0 auto 25px auto;
+
+    &.hr-left {
+        margin: 0 auto 25px 0;
+    }
+}
+
+.title,
+a.title:link,
+a.title:active,
+a.title:visited {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 25px;
+    color: black;
+}
+
+.title-sub {
+    font-size: 15px;
+    text-align: center;
+
+    @include breakpoint(large) {
+        max-width: 850px;
+        margin: auto;
+        margin-bottom: 50px;
+    }
 }

@@ -1,0 +1,16 @@
+$colors : (
+    gray : (
+        base : #f1f1f1  
+    ),
+    green : (
+        base : #6abe32,
+        dark : darken(#6abe32,10)
+    )
+);
+
+$breakpoint : (
+    'extra_small'   : 10px,
+    'small'         : 768px,
+    'medium'        : 992px,
+    'large'         : 1024px
+);

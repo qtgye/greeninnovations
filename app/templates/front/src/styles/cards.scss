@@ -1,0 +1,113 @@
+.service-card {
+    position: relative;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+
+    @include breakpoint(large) {
+        min-height: 185px;
+        font-size: 0;
+    }
+
+    .card-icon,
+    .card-content {
+        display: block;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+    
+    .card-icon {
+        background-color: palette(green);
+        width: 30%;
+        left: 0;
+        text-align: center;
+    }
+
+        img.service-card-icon {
+            width: 50%;
+            position: static;
+            transform: none;
+        }
+    
+    .card-content {
+        text-align: left;
+        width: 70%;
+        right: 0;
+        padding: 0 12%;
+    }
+
+        .card-content-center {
+
+        }
+
+            .strong {
+                font-weight: bolder;
+            }
+}
+
+
+
+.article-card {
+    padding: 0 20px;
+
+    .card-thumbnail {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .card-thumbnail-image {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .card-content {
+            position: relative;
+            margin-top: 15px;
+            padding: 0 5px;
+        }
+
+            .badge {
+                width: 50px;
+                height: 50px;
+                background-color: palette(green);
+                color: white;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 50%;
+
+                    p {
+                        margin: 0;
+                        font-size: 15px;
+                    }
+
+                    .badge-date {
+                        font-size: 18px;
+                    }
+            }
+
+            .card-content-body {
+                padding-left: 65px;
+                padding-top: 5px;
+                text-align: left;
+            }
+
+                .card-title {
+                    color: black;
+                    font-weight: bolder;                    
+                }
+
+                .card-excerpt {
+                    text-align: justify;
+                }
+
+}

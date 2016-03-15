@@ -2,7 +2,9 @@
 <section class="footer-section footer-section-5" style="outline-offset: -3px;">
     <div class="container">
     
-        <?php if ( isset($info['logo']) ): ?>
+        <?php if ( !empty($info['logo_white']) ): ?>
+            <img style="opacity:.3" src="/uploads/<?= $info['logo_white'] ?>" alt="Company logo">
+        <?php elseif ( !empty($info['logo']) ): ?>
             <img src="/uploads/<?= $info['logo'] ?>" alt="Company logo">
         <?php else: ?>
             <h4><?= $info['site-title'] ?></h4>
@@ -26,6 +28,7 @@
 <!-- /#page --> 
 
 <!-- JavaScript --> 
+<script src="https://npmcdn.com/flickity@1.1/dist/flickity.pkgd.min.js"></script>
 <script src="/app/templates/front/minify/rgen_min.js"></script>
 <script async="" src="/app/templates/front/js/rgen.js"></script>
 

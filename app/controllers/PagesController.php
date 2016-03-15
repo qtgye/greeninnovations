@@ -30,7 +30,8 @@ class PagesController extends Controller {
         $data = array_merge(self::$data,[
             'page' => 'home',
             'partners' => \models\Partner::all(),
-            'projects' => \models\Project::get(3)
+            'projects' => \models\Project::get(3),
+            'news' => \models\News::get(3),
         ]);
 
         View::rendertemplate('page',$data);

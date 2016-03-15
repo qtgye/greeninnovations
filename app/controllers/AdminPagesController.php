@@ -243,7 +243,7 @@ class AdminPagesController extends Controller {
         self::$data['controller_name'] = self::$data['model_name'] . 'sController';
 
         // get images for particular models
-        if ( preg_match('/(product|partner|project|info)/i', $model_name ) ) {
+        if ( preg_match('/(product|partner|project|info|news)/i', $model_name ) ) {
             self::$data['images'] = \models\Media::images();
             self::$data['has_image_modal'] = true;
         }

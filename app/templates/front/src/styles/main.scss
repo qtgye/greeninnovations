@@ -1,5 +1,21 @@
 // Include all scss here
 
+// web fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+
+// variables and mixins
+@import 'helpers';
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+
+@import 'layout';
 @import 'home';
+@import 'nav';
+@import 'buttons';
 @import 'gallery';
 @import 'overrides';
+@import 'cards';
+@import 'carousel';
+@import 'modal';

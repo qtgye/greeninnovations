@@ -11,3 +11,85 @@
     display: inline-block;
     vertical-align: top;
 }
+
+
+
+#homepage_carousel.slider-section-1 {
+    
+    .main-text {
+        font-weight: bolder;
+
+        small {
+            font-weight: normal;
+        }
+    }
+
+    hr {
+        width: 200px;
+        border-bottom: 3px solid palette(green);
+        margin: 0 auto 25px auto;
+    }
+}
+
+
+.home-projects-section {
+    padding: 0;
+
+    @include breakpoint(large) {
+        height: 600px;
+    }
+
+    .product-box2 {
+        box-shadow: none;
+
+        @include breakpoint(large) {
+            width: 1200px;
+            margin: auto;
+        }
+    }    
+
+    .item {      
+        padding: 100px 0;  
+        background: black;       
+    }
+
+    .info {
+        background-color: transparent;
+    }
+
+    a:link,
+    a:visited,
+    a:active,
+    h1,h2,h3,h4,h5,h6,
+    p {
+        color: white;
+    }                
+
+    .bg-image {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        opacity: .3;
+    }
+
+    .owl-dots {
+        display: none;
+    }
+
+    img {
+        height: 400px;
+    }
+
+    .small-heading {
+        margin-bottom: 5px;
+    }
+}
+
+
+
+#news {
+    background-color: white;
+}   

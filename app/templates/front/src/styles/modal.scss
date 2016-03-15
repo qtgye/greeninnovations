@@ -1,0 +1,88 @@
+.modal {
+
+    .modal-dialog {
+        border-radius: none; 
+    }
+
+        .modal-content {
+            overflow: hidden;
+
+            @include breakpoint(medium) {
+                width: 992px;
+                padding: 60px;
+            }
+        }
+
+            .modal-header {
+                padding-bottom: 50px;
+                border-bottom: 1px solid palette(gray);
+            }
+
+                .modal-title {
+                    color: palette(green);
+                    text-align: center;
+                    font-weight: bolder;
+                }
+
+                .modal-subtitle {
+                    text-align: center;                    
+                }
+
+            .modal-body {
+                padding: 0;
+            }
+
+            .modal-footer {
+                border-top: none;
+                text-align: center;
+                padding-top: 50px;
+            }
+}
+
+
+
+.modal-corner-button {
+    color: white;
+    position: absolute;
+    top: 0;
+    font-weight: lighter;
+    border: none;
+    display: block;
+    width: 90px;
+    height: 90px;
+    background: transparent;
+
+    &.top-right {
+        right: 0;
+
+        .modal-corner-triangle {
+            left: auto;
+            right: 0;
+            transform: scaleX(-1);
+        }
+
+        i {
+            left: 70%;
+            top: 30%;
+        }
+    }
+}
+
+.modal-corner-button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-weight: lighter;
+    color: white;
+}
+
+    .modal-corner-triangle {                    
+        border-left: 45px solid palette(green);
+        border-top: 45px solid palette(green);
+        border-right: 45px solid transparent;
+        border-bottom: 45px solid transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
