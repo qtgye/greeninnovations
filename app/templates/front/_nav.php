@@ -33,7 +33,7 @@
                 <li><a id="request_quote" class="btn btn-success" href="#requestModal" data-toggle="modal" data-target="#requestModal">Request A Quote</a></li>
             </ul>
             <div class="nav-other">
-                <span class="text-success"><i class="fa fa-phone"></i> <?= $info['phone'] ?></span>
+                <span class="text-success"><a href="javascript:;"><i class="fa fa-phone"></i> <?= $info['phone'] ?></a></span>
                 <span class="text-success"><a href="mailto:<?= $info['email'] ?>"><i class="fa fa-envelope-o"></i> Email us</a></span>
             </div>
         </div><!-- /.nav --> 
