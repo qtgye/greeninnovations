@@ -51,10 +51,20 @@
 
     .nav-other > span {
         color: palette(green);
+        margin-left: 15px;
 
         &:hover {
             color: palette(green,dark);
         }
+
+        a {
+            font-size: 14px;
+        }
+        
+        .fa {
+            margin-right: 0;
+        }
+
     }
 
 }

@@ -71,9 +71,16 @@ section#services {
 }
 .nav.vm-item .nav-other > span {
   color: #6abe32;
+  margin-left: 15px;
 }
 .nav.vm-item .nav-other > span:hover {
   color: #539627;
+}
+.nav.vm-item .nav-other > span a {
+  font-size: 14px;
+}
+.nav.vm-item .nav-other > span .fa {
+  margin-right: 0;
 }
 
 #request-form .form-group {
