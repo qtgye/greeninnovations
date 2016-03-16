@@ -61,20 +61,15 @@
                 <div class="row">
                     <!-- FULL NAME -->
                     <div class="form-group col-xs-6">
-                        <label class="col-xs-12 control-label text-left" for="products_name">Full Name</label>
+                        <label class="col-xs-12 control-label text-left" for="">Full Name</label>
                         <div class="col-xs-12">
                             <input type="text" name="first_name" class="form-control" placeholder="First Name">
                         </div>
                     </div>
                     <div class="form-group col-xs-6">
-                        <label class="col-xs-12 control-label text-left" for="products_name">&nbsp;</label>
+                        <label class="col-xs-12 control-label text-left" for="">&nbsp;</label>
                         <div class="col-xs-12">
-                          <?= Form::input([
-                              'type' => 'text',
-                              'name' => 'last_name',
-                              'class' => 'form-control',
-                              'placeholder' => 'Last Name'
-                          ]) ?>
+                          <input type="text" name="last_name" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
                 </div>
@@ -84,12 +79,7 @@
                     <div class="form-group col-xs-6">
                         <label class="col-xs-12 control-label text-left" for="">Email</label>
                         <div class="col-xs-12">
-                          <?= Form::input([
-                              'type' => 'text',
-                              'name' => 'email',
-                              'class' => 'form-control',
-                              'placeholder' => 'Enter valid email address'
-                          ]) ?>
+                          <input type="text" class="form-control" name="email" placeholder="Enter valid email address">
                         </div>
                     </div>
 
@@ -97,12 +87,7 @@
                     <div class="form-group col-xs-6">
                         <label class="col-xs-12 control-label text-left" for="">Phone</label>
                         <div class="col-xs-12">
-                          <?= Form::input([
-                              'type' => 'text',
-                              'name' => 'phone',
-                              'class' => 'form-control',
-                              'placeholder' => '091-000-0000'
-                          ]) ?>
+                          <input type="text" class="form-control" name="phone" placeholder="091-000-0000">
                         </div>
                     </div>
                 </div>
@@ -141,12 +126,7 @@
                     <div class="form-group col-xs-12 textbox-group">
                         <label class="control-label text-left col-xs-12">Project brief</label>
                         <div class="col-xs-12">
-                            <?= Form::textbox([
-                                'name' => 'project_brief',
-                                'class'=> "form-control",
-                                'rows' => "5",
-                                'placeholder' => 'Briefly describe your project specs.'
-                            ]) ?>
+                            <textarea name="project_brief" id="" rows="5" class="form-control" placeholder="Briefly describe your project specs."></textarea>
                         </div>
                     </div>
                 </div>
