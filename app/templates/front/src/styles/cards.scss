@@ -111,3 +111,60 @@
                 }
 
 }
+
+
+
+.card-wide {
+    @include clearfix;
+    background-color: white;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
+    display: block;
+    margin: auto;
+    position: relative;
+    margin-bottom: 70px;
+
+    @include breakpoint(small) {
+        width: 600px;
+    }
+
+    @include breakpoint(medium) {
+        width: 800px;
+    }
+
+    @include breakpoint(large) {
+        width: 1000px;
+    }
+
+    .card-image {
+        background-color: silver;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            height: 100%;
+            width: auto;
+            max-width: none;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .card-content {
+        text-align: left;
+        padding: 70px;
+        float: right;
+    }
+
+        .card-title {
+            text-align: left;
+            font-weight: bolder;
+        }
+
+        .card-info {
+            text-align: left;
+        }
+}

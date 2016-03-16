@@ -1,0 +1,37 @@
+.projects-carousel {
+    // height: 500px;
+
+    .category-label {
+        background-color: palette(gray,x-dark);
+    }
+
+    .flickity-page-dots {
+
+        .dot {
+            border: 2px solid gray;
+            width: 15px;
+            height: 15px;
+            background-color: transparent;
+
+            &.is-selected {
+                background-color: palette(green);
+                border: 2px solid palette(green);
+            }
+        }
+    }
+}
+
+
+
+.projects-carousel-item {
+    width: 100%;
+
+    .card-wide {
+        margin-bottom: 0;
+    }
+
+    .card-image {
+        background-color: white;
+    }
+
+}

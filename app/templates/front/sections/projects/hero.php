@@ -1,11 +1,12 @@
-<!-- Call to action-section -->
-<section class="calltoaction-section calltoaction-section-1">
-    <div class="container">
-        <h2 class="title medium">Start your trial now</h2>
-        <p class="title-sub small">14 days free. No credit card required.</p>
-        <a href="#" class="btn btn-default btn-lg">Sign up for FREE</a>
+<section class="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+        <h6 class="hero-title-small">
+            Learn more about us and what we do.
+        </h6>
+        <h2 class="hero-title-large">
+            COMPLETED PROJECTS
+        </h2>
+        <hr>
     </div>
-    <div class="full-wh bg-cover bg-cc" data-bg="/app/templates/front/images/bg2.jpg" style="background-image: url(http://greenlemonmedia.com/projects/builder/elements/images/bg2.jpg);">
-        <b class="full-wh"></b>
-    </div>
-</section><!-- /.calltoaction-section -->
+</section>

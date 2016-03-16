@@ -15,5 +15,14 @@
                 color: palette(green,dark);
             }
         }
+
+        &.btn-white {
+            border-color: white;
+            color: white;
+        }
+    }
+
+    &.btn-small {
+        font-size: .8em;
     }
 }

@@ -29,83 +29,6 @@ section#services {
   background-color: #f1f1f1;
 }
 
-.partners-card-container {
-  text-align: center;
-}
-
-.partner-card {
-  float: none;
-  display: inline-block;
-  vertical-align: top;
-}
-
-#homepage_carousel.slider-section-1 .main-text {
-  font-weight: bolder;
-}
-#homepage_carousel.slider-section-1 .main-text small {
-  font-weight: normal;
-}
-#homepage_carousel.slider-section-1 hr {
-  width: 200px;
-  border-bottom: 3px solid #6abe32;
-  margin: 0 auto 25px auto;
-}
-
-.home-projects-section {
-  padding: 0;
-}
-@media (min-width: 1024px) {
-  .home-projects-section {
-    height: 600px;
-  }
-}
-.home-projects-section .product-box2 {
-  box-shadow: none;
-}
-@media (min-width: 1024px) {
-  .home-projects-section .product-box2 {
-    width: 1200px;
-    margin: auto;
-  }
-}
-.home-projects-section .item {
-  padding: 100px 0;
-  background: black;
-}
-.home-projects-section .info {
-  background-color: transparent;
-}
-.home-projects-section a:link,
-.home-projects-section a:visited,
-.home-projects-section a:active,
-.home-projects-section h1, .home-projects-section h2, .home-projects-section h3, .home-projects-section h4, .home-projects-section h5, .home-projects-section h6,
-.home-projects-section p {
-  color: white;
-}
-.home-projects-section .bg-image {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  opacity: .3;
-}
-.home-projects-section .owl-dots {
-  display: none;
-}
-.home-projects-section img {
-  height: 400px;
-}
-.home-projects-section .small-heading {
-  margin-bottom: 5px;
-}
-
-#news {
-  background-color: white;
-}
-
 .nav-wrp .container {
   width: 100%;
 }
@@ -220,6 +143,13 @@ section#services {
   border-color: #539627;
   color: #539627;
 }
+.btn.btn-outline.btn-white {
+  border-color: white;
+  color: white;
+}
+.btn.btn-small {
+  font-size: .8em;
+}
 
 .gallery {
   text-align: center;
@@ -255,6 +185,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif;
+}
+
+section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-bottom: none;
 }
 
 .btn {
@@ -399,6 +335,68 @@ a.title:visited {
   text-align: justify;
 }
 
+.card-wide {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+  display: block;
+  margin: auto;
+  position: relative;
+  margin-bottom: 70px;
+}
+.card-wide:after, .card-wide:before {
+  content: '';
+  display: table;
+  width: 0;
+  visibility: 0;
+  height: 0;
+  font-size: 0;
+  clear: both;
+}
+@media (min-width: 768px) {
+  .card-wide {
+    width: 600px;
+  }
+}
+@media (min-width: 992px) {
+  .card-wide {
+    width: 800px;
+  }
+}
+@media (min-width: 1024px) {
+  .card-wide {
+    width: 1000px;
+  }
+}
+.card-wide .card-image {
+  background-color: silver;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+}
+.card-wide .card-image img {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.card-wide .card-content {
+  text-align: left;
+  padding: 70px;
+  float: right;
+}
+.card-wide .card-title {
+  text-align: left;
+  font-weight: bolder;
+}
+.card-wide .card-info {
+  text-align: left;
+}
+
 .carousel {
   white-space: nowrap;
   position: relative;
@@ -497,4 +495,162 @@ a.title:visited {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+section.hero {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  overflow: hidden;
+  background: url("/app/templates/front/images/hero_bg.jpg");
+  background-size: cover;
+  background-position: center -70px;
+}
+section.hero * {
+  color: white;
+}
+
+.hero-bg-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: .8;
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+  position: relative;
+}
+
+.hero-title-small {
+  text-align: center;
+}
+
+.hero-title-large {
+  text-align: center;
+  font-weight: bolder;
+}
+
+.title-sub {
+  text-align: center;
+}
+
+.hero-button-group {
+  text-align: center;
+  letter-spacing: 1em;
+}
+.hero-button-group * {
+  letter-spacing: normal;
+}
+
+.partners-card-container {
+  text-align: center;
+}
+
+.partner-card {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#homepage_carousel.slider-section-1 .main-text {
+  font-weight: bolder;
+}
+#homepage_carousel.slider-section-1 .main-text small {
+  font-weight: normal;
+}
+#homepage_carousel.slider-section-1 hr {
+  width: 200px;
+  border-bottom: 3px solid #6abe32;
+  margin: 0 auto 25px auto;
+}
+
+.home-projects-section {
+  padding: 0;
+}
+@media (min-width: 1024px) {
+  .home-projects-section {
+    height: 600px;
+  }
+}
+.home-projects-section .product-box2 {
+  box-shadow: none;
+}
+@media (min-width: 1024px) {
+  .home-projects-section .product-box2 {
+    width: 1200px;
+    margin: auto;
+  }
+}
+.home-projects-section .item {
+  padding: 100px 0;
+  background: black;
+}
+.home-projects-section .info {
+  background-color: transparent;
+}
+.home-projects-section a:link,
+.home-projects-section a:visited,
+.home-projects-section a:active,
+.home-projects-section h1, .home-projects-section h2, .home-projects-section h3, .home-projects-section h4, .home-projects-section h5, .home-projects-section h6,
+.home-projects-section p {
+  color: white;
+}
+.home-projects-section .bg-image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: .3;
+}
+.home-projects-section .owl-dots {
+  display: none;
+}
+.home-projects-section img {
+  height: 400px;
+}
+.home-projects-section .small-heading {
+  margin-bottom: 5px;
+}
+
+#news {
+  background-color: white;
+}
+
+.about-cards-container {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.projects-carousel .category-label {
+  background-color: #a5a5a5;
+}
+.projects-carousel .flickity-page-dots .dot {
+  border: 2px solid gray;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+}
+.projects-carousel .flickity-page-dots .dot.is-selected {
+  background-color: #6abe32;
+  border: 2px solid #6abe32;
+}
+
+.projects-carousel-item {
+  width: 100%;
+}
+.projects-carousel-item .card-wide {
+  margin-bottom: 0;
+}
+.projects-carousel-item .card-image {
+  background-color: white;
 }

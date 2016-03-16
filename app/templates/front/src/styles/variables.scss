@@ -1,6 +1,8 @@
 $colors : (
     gray : (
-        base : #f1f1f1  
+        base : #f1f1f1,
+        dark : darken(#f1f1f1,10),
+        x-dark : darken(#f1f1f1,30)
     ),
     green : (
         base : #6abe32,

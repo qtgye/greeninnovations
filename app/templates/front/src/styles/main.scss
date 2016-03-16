@@ -11,7 +11,7 @@
 @import 'mixins';
 
 @import 'layout';
-@import 'home';
+
 @import 'nav';
 @import 'buttons';
 @import 'gallery';
@@ -19,3 +19,9 @@
 @import 'cards';
 @import 'carousel';
 @import 'modal';
+@import 'hero';
+
+// page-specific styles
+@import 'page-home';
+@import 'page-about';
+@import 'page-projects'
