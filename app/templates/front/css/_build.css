@@ -81,6 +81,7 @@ section#services {
 }
 .nav.vm-item .nav-other > span .fa {
   margin-right: 0;
+  font-size: 15px;
 }
 
 #request-form .form-group {
