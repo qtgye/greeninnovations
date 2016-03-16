@@ -90,7 +90,7 @@ abstract class Model extends Controller {
 			
 		}
 
-		$exception = new \Exception('The table name was not set for ' . self::class);
+		$exception = new \Exception('The table name was not set for ' . self);
 		\core\logger::exception_handler($exception);
 
 	}
