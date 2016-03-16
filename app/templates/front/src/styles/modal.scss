@@ -9,12 +9,12 @@
 
             @include breakpoint(medium) {
                 width: 992px;
-                padding: 60px;
+                padding: 10px 60px;
             }
         }
 
             .modal-header {
-                padding-bottom: 50px;
+                padding-top: 5px;
                 border-bottom: 1px solid palette(gray);
             }
 

@@ -145,11 +145,11 @@ section#services {
 }
 #request-form label {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   font-weight: bolder;
 }
 #request-form input[type="text"] {
-  padding: 25px;
+  padding: 15px;
 }
 #request-form ::-webkit-input-placeholder,
 #request-form :-moz-placeholder,
@@ -158,7 +158,7 @@ section#services {
   font-style: italic;
 }
 #request-form .radio-group {
-  margin-top: 25px;
+  margin-top: 13px;
 }
 #request-form .radio-group-border {
   border-radius: 3px;
@@ -168,7 +168,7 @@ section#services {
   margin-right: 15px;
 }
 #request-form .radio-group-label {
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 5px 0;
   border-right: 1px solid #f1f1f1;
   display: block;
@@ -176,11 +176,16 @@ section#services {
 #request-form .radio-label input[type="radio"] {
   margin-right: 5px;
 }
-#request-form .textbox-group {
-  margin-top: 10px;
-}
 #request-form .textbox-group textarea {
-  padding: 25px;
+  padding: 10px 15px;
+}
+#request-form .modal-form-actions {
+  text-align: center;
+  padding: 20px 0;
+  letter-spacing: 1em;
+}
+#request-form .modal-form-actions * {
+  letter-spacing: normal;
 }
 
 .btn {
@@ -409,11 +414,11 @@ a.title:visited {
 @media (min-width: 992px) {
   .modal .modal-content {
     width: 992px;
-    padding: 60px;
+    padding: 10px 60px;
   }
 }
 .modal .modal-header {
-  padding-bottom: 50px;
+  padding-top: 5px;
   border-bottom: 1px solid #f1f1f1;
 }
 .modal .modal-title {

@@ -149,19 +149,23 @@
                             <?= Form::textbox([
                                 'name' => 'project_brief',
                                 'class'=> "form-control",
-                                'rows' => "10",
+                                'rows' => "5",
                                 'placeholder' => 'Briefly describe your project specs.'
                             ]) ?>
                         </div>
                     </div>
                 </div>
 
+                <div class="row">
+                  <div class="modal-form-actions">
+                    <button type="submit" class="btn btn-success" data-dismiss="modal">SUBMIT REQUEST</button>
+                    <div class="btn btn-outline btn-success" data-dismiss="modal">CANCEL</div>       
+                  </div>
+                </div>
+
               </form>
             </div>
-            <div class="modal-footer">
-                <div class="btn btn-success" data-dismiss="modal">SUBMIT REQUEST</div>
-                <div class="btn btn-outline btn-success" data-dismiss="modal">CANCEL</div>                
-            </div>
+
         </div>
     </div>
 </div>

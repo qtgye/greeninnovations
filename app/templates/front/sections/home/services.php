@@ -14,7 +14,7 @@
                 <div class="col-md-4 gallery-item">                        
                     <div class="service-card">
                         <div class="card-icon">
-                            <img class="service-card-icon" src="/app/templates/front/icons/service_icon_<?= strtolower($value) ?>" alt="">
+                            <img class="service-card-icon" src="/app/templates/front/icons/service_icon_<?= strtolower($value) ?>.jpg" alt="">
                         </div>
                         <div class="card-content">
                             <div class="card-content-center">
