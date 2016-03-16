@@ -63,12 +63,7 @@
                     <div class="form-group col-xs-6">
                         <label class="col-xs-12 control-label text-left" for="products_name">Full Name</label>
                         <div class="col-xs-12">
-                          <?= Form::input([
-                              'type' => 'text',
-                              'name' => 'first_name',
-                              'class' => 'form-control',
-                              'placeholder' => 'First Name'
-                          ]) ?>
+                            <input type="text" name="first_name" class="form-control" placeholder="First Name">
                         </div>
                     </div>
                     <div class="form-group col-xs-6">
