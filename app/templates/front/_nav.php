@@ -1,4 +1,3 @@
-<?php use \helpers\Form; ?>
 <!-- Navigation -->
 <!-- /.nav-wrp --><!-- Call to action-section -->
 <!-- /.calltoaction-section --><!-- Testimonials -->
@@ -22,15 +21,18 @@
             </a>
             <a class="nav-handle fs-touch-element" data-nav=".nav"><i class="fa fa-bars"></i></a>   
         </div>
+
         
         <div class="nav vm-item">
             <ul class="nav-links">
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/technologies">Technologies</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/news">News</a></li>
-                <li><a id="request_quote" class="btn btn-success" href="#requestModal" data-toggle="modal" data-target="#requestModal">Request A Quote</a></li>
+                <li><a class="<?= $page == 'about' ? 'active' : '' ?>" href="/about">About</a></li>
+                <li><a class="<?= $page == 'services' ? 'active' : '' ?>" href="/services">Services</a></li>
+                <li><a class="<?= $page == 'technologies' ? 'active' : '' ?>" href="/technologies">Technologies</a></li>
+                <li><a class="<?= $page == 'projects' ? 'active' : '' ?>" href="/projects">Projects</a></li>
+                <li><a class="<?= $page == 'news' ? 'active' : '' ?>" href="/news">News</a></li>
+                <li>
+                    <button id="request_quote" class="btn btn-success" href="#requestModal" data-toggle="modal" data-target="#requestModal">Request A Quote</button>
+                </li>
             </ul>
             <div class="nav-other">
                 <span class="text-success"><a href="javascript:;"><i class="fa fa-phone"></i> <?= $info['phone'] ?></a></span>

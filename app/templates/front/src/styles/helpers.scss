@@ -1,7 +1,20 @@
-.flex-center {
+// ------------------------------
+//  HELPER PLACEHOLDERS
+// ------------------------------
+
+%flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+// ------------------------------
+//  HELPER CLASSES
+// ------------------------------
+
+.flex-center {
+    @extend %flex-center;
 
     .flex-content {
 

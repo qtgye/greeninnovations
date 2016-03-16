@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
-.flex-center {
+.flex-center, .nav.vm-item .nav-links li, .nav.vm-item .nav-links li a {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -115,13 +115,29 @@ section#services {
   }
 }
 
+.nav.vm-item {
+  height: 100%;
+}
+.nav.vm-item .nav-links {
+  padding: 0;
+  height: 100%;
+}
 .nav.vm-item .nav-links li {
   padding: 0;
+  height: 100%;
 }
 .nav.vm-item .nav-links li a {
   text-transform: uppercase;
-  padding: 10px 15px;
+  padding: 0 15px;
   font-weight: bold;
+  height: 100%;
+  border-top: 3px solid transparent;
+  -webkit-transition: border .3s ease;
+  transition: border .3s ease;
+}
+.nav.vm-item .nav-links li a.active, .nav.vm-item .nav-links li a:hover {
+  border-top: 3px solid #6abe32;
+  color: #539627;
 }
 .nav.vm-item .nav-links li a#request_quote {
   color: white;

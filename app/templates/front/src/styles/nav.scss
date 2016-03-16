@@ -11,17 +11,32 @@
 }
 
 .nav.vm-item {
+    height: 100%;
 
     .nav-links {
+        padding: 0;
+        height: 100%;
 
         li {
             padding: 0;
+            height: 100%; 
+            @extend %flex-center;           
         }
 
         li a {
             text-transform: uppercase;
-            padding: 10px 15px;
+            padding: 0 15px;
             font-weight: bold;
+            height: 100%;
+            border-top: 3px solid transparent;
+            transition: border .3s ease;
+            @extend %flex-center;
+
+            &.active,
+            &:hover {
+                border-top: 3px solid palette(green);
+                color: palette(green,dark);
+            }
         }
 
         li a#request_quote {
