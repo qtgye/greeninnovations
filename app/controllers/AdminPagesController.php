@@ -171,6 +171,11 @@ class AdminPagesController extends Controller {
         View::rendertemplate('page', $data);
     }
 
+    public function page ($page)
+    {
+        
+    }
+
     public function ajax ( $model_name )
     {
         $method = $_SERVER['REQUEST_METHOD'];

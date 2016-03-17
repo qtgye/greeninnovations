@@ -273,6 +273,7 @@ aside {
   background-color: transparent;
   width: auto;
   position: relative;
+  overflow: hidden !important;
 }
 
 ul.sidebar-nav {
@@ -385,6 +386,10 @@ a.sidebar-link:visited {
     top: 3px;
     opacity: 1;
   }
+}
+
+ul.sidebar-nav.page-modules-nav {
+  margin-top: 10px;
 }
 
 .c-upload {

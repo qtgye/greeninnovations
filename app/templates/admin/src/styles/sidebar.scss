@@ -1,4 +1,4 @@
-aside {    
+aside { 
     display: block !important;
     position: fixed !important;
     left: -50px;
@@ -37,6 +37,7 @@ aside {
     background-color: transparent;
     width: auto;
     position: relative;
+    overflow: hidden !important;
 }
 
 
@@ -87,11 +88,6 @@ a.sidebar-link:visited {
         color: palette(blue,dark);
         box-shadow: inset 3px 0 0 0 palette(blue,dark);
     }
-}
-
-
-
-#sidebar {
 }
 
 
@@ -169,4 +165,10 @@ a.sidebar-link:visited {
         }
         
     }
+}
+
+
+
+ul.sidebar-nav.page-modules-nav {
+    margin-top: 10px;
 }
