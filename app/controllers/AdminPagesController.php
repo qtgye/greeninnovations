@@ -183,7 +183,7 @@ class AdminPagesController extends Controller {
 
         if ( $data['method'] == "DELETE" && isset($data['id']) ) {
             if ( array_key_exists($model_name, self::$data['resourced_models']) ) {
-                $model = '\\models\\' . $model_name;
+                $model = '\\models\\' . ucfirst($model_name);
                 $item = $model::find($_POST['id']);
                 if ( $item ) {
                     if ( $item->destroy() ) {
