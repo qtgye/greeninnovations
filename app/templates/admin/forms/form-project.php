@@ -49,3 +49,17 @@
       </div>      
     </div>    
 </div>
+
+<!-- DETAILS -->
+<div class="form-group <?= $errors->has('details') ? 'has-error' : '' ?>">
+    <label class="control-label col-lg-2" for="project_details">Project Details:</label>
+    <div class="col-lg-10">
+        <?= Form::textbox([
+            'name' => 'details',
+            'id' => "project_details",
+            'class'=> "form-control ckeditor",
+            'rows' => "3",
+            'value' => $input->get('details')
+        ]) ?>
+    </div>
+</div>

@@ -21,7 +21,11 @@
                             <p class="card-info">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium quo ducimus ut nihil ratione harum! Similique magni ipsum placeat et, ratione sit velit! Omnis doloremque nisi, possimus deserunt odio dolorum.
                             </p>
-                            <div class="btn btn-small btn-outline btn-success">COMPLETE DETAILS</div>
+                            
+                            <?php if ( !empty($project->details) ): ?>                                
+                                <div class="btn btn-small btn-outline btn-success" data-toggle="modal" data-target="#project_details_modal_<?= $project->id ?>">COMPLETE DETAILS</div>
+                            <?php endif ?>
+
                             <div class="btn btn-small btn-success" data-toggle="modal" data-target="#requestModal">START A PROJECT WITH US</div>  
                         </div>
                     </div>
