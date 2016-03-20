@@ -42,9 +42,31 @@ App.createModule( 'Sortable', (function (app) {
         _sortable.$input = $container.find('.js-sortable-input');
         _sortable.$container = $container.find('.js-sortable-container');
         _sortable.$add = $container.find('.js-add-sortable');
-        _sortable.data = JSON.parse(_sortable.$input.val()) || {};
-        _sortable.name = _sortable.data.name || _sortable.$element.data('sortableName');
+        _sortable.name = _sortable.$element.attr('name');
         _sortable.items = [];
+
+        // setup data
+
+        var inputData = _sortable.$input.val();
+
+        if ( inputData ) {
+            try {
+                inputData = JSON.parse(_sortable.$input.val())
+            } catch (e) {
+                console.warn(e);
+                inputData = {
+                    name : _sortable.name,
+                    items : []
+                }
+            }
+        } else {
+            inputData = {
+                name : _sortable.name,
+                items : []
+            }
+        }
+        _sortable.data = inputData;
+        
 
         // -- methods
 
