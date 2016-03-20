@@ -29,6 +29,7 @@ class PagesController extends Controller {
     {   
         $data = array_merge(self::$data,[
             'page' => 'home',
+            'carousel' => \models\PageModule::findWhere('name','home-hero-carousel'),
             'partners' => \models\Partner::all(),
             'projects' => \models\Project::get(3),
             'news' => \models\News::get(3),
