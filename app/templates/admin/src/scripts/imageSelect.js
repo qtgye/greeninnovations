@@ -310,6 +310,8 @@ App.createModule( 'ImageSelect', (function (app) {
     /**
      * API
      */
+    
+    module.bindImageInput = bindImageInput;
 
 
 

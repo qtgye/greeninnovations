@@ -9,7 +9,9 @@ use \core\router,
 // Router::any('/subpage', '\controllers\welcome@subpage');
 
 
-// Front End
+// ------------------------------
+// FRONT END
+// ------------------------------
 
 Router::get('/','\controllers\PagesController@home');
 Router::get('about','\controllers\PagesController@about');
@@ -25,13 +27,19 @@ Router::post('login', '\controllers\AuthController@postLogin');
 Router::get('logout', '\controllers\AuthController@getLogout');
 
 
-// admin routes
+// ------------------------------
+// ADMIN
+// ------------------------------
 
 // specific routes
-Router::get('/admin/info','\controllers\AdminPagesController@info');
 
-// common routes
+
+
 Router::get('/admin','\controllers\AdminPagesController@index');
+
+Router::get('/admin/info','\controllers\AdminPagesController@info');
+Router::get('/admin/module/(:any)','\controllers\AdminPagesController@modules');
+
 Router::get('/admin/(:any)','\controllers\AdminPagesController@all');
 Router::get('/admin/(:any)/new','\controllers\AdminPagesController@create');
 Router::get('/admin/(:any)/(:num)','\controllers\AdminPagesController@edit');
@@ -46,8 +54,13 @@ Router::post('/admin/faq','\controllers\FAQsController@store');
 Router::post('/admin/news','\controllers\NewsController@store');
 Router::post('/admin/project','\controllers\ProjectsController@store');
 Router::post('/admin/info','\controllers\InfosController@update');
+Router::post('/admin/module/(:any)','\controllers\PageModulesController@update');
 
-// ajax
+
+// ------------------------------
+// AJAX
+// ------------------------------
+
 Router::get('/api/get_upload_limit', '\controllers\AdminPagesController@get_upload_limit');
 Router::any('/api/media', '\controllers\MediaController@ajax');
 Router::any('/api/info', '\controllers\InfosController@ajax');
@@ -57,6 +70,8 @@ Router::any('/api/(:any)', '\controllers\AdminPagesController@ajax');
 // Router::any('/api/news', '\controllers\NewsController@ajax');
 // Router::any('/api/project', '\controllers\ProjectsController@ajax');
 // Router::any('/api/info', '\controllers\InfosController@ajax');
+
+
 //if no route found
 Router::error('\core\error@index');
 

@@ -26,7 +26,7 @@ class InfosController extends Controller {
 
             foreach ( $infos as $key => $value) {
 
-                if ( !in_array($key,Info::$fields) )
+                if ( !in_array($key,Info::$fields) ) continue;
 
                 $info = Info::findWhere('name',$key);
                 if ( $info ) {
@@ -49,7 +49,7 @@ class InfosController extends Controller {
 
             }
 
-            session::flash(['success'=>'Succesfully updated information.']);
+            session::flash(['success'=>'Succesfully updated modules.']);
             url::redirect('/admin/info', true);
             
         } else {

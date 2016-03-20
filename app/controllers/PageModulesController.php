@@ -15,46 +15,39 @@ use \models\PageModule;
  */
 class PageModulesController extends Controller {
     
-    public function update ()
+    public function update ( $page )
     {
         global $input, $errors;
 
-        $infos = $input->all();
+        $modules = $input->all();
 
-        if ( $this->validate( $infos, Info::$rules ) ) {
+        foreach ( $modules as $key => $value) {
 
-            foreach ( $infos as $key => $value) {
+            if ( !in_array($key,PageModule::$modules[$page]) ) continue;
 
-                if ( !in_array($key,Info::$fields) )
-
-                $info = Info::findWhere('name',$key);
-                if ( $info ) {
-                    // update if existing and different
-                    if ( $info->value !== $value ) {
-                        $info->update([
-                            'value' => $value
-                        ]);
-                        $info->save();
-                        $input->update($info->attributes);                        
-                    }
-                } else {
-                    // new entry
-                    $new = Info::create([
-                        'name' => $key,
+            $module = PageModule::findWhere('name',$key);
+            if ( $module ) {
+                // update if existing and different
+                if ( $module->value != $value ) {
+                    $module->update([
                         'value' => $value
                     ]);
-                    $new->save();
+                    $module->save();
+                    $input->update($module->attributes);                        
                 }
-
+            } else {
+                // new entry
+                $new = PageModule::create([
+                    'name' => $key,
+                    'value' => $value
+                ]);
+                $new->save();
             }
 
-            session::flash(['success'=>'Succesfully updated information.']);
-            url::redirect('/admin/info', true);
-            
-        } else {
-            url::previous();
-            exit;
         }
+
+        session::flash(['success'=>'Succesfully updated information.']);
+        url::redirect("/admin/module/$page", true);
 
     }
 }

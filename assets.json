@@ -19,7 +19,8 @@
                 "imageSelect",
                 "pdfSelect",
                 "conditionalInput",
-                "sidebarToggle"
+                "sidebarToggle",
+                "sortable"
             ]
         }
 

@@ -34,6 +34,12 @@ abstract class Model extends Controller {
 	 * @var string
 	 */
 	protected $table = '';
+
+	/**
+	 * valid operators for where clause
+	 * @var regex string to match
+	 */
+	protected $operators = '/(=|<>|!=|in|not\sin)/i';
 	
 	/**
 	 * create a new instance of the database helper
@@ -70,17 +76,27 @@ abstract class Model extends Controller {
 	{
 		if ( $this->table ) {
 
+			$now = date("Y-m-d H:i:s", time());
+
 			if ( !isset($this->id) ) {
+
+				$this->attributes['created_at'] = $now;
+				$this->attributes['updated_at'] = $now;
 				
 				if ( $this->_db->insert(PREFIX.$this->table,$this->attributes) ) {
 					$this->attributes['id'] = $id;
 					$this->id = $id;
+					$this->created_at = $now;
+					$this->updated_at = $now;
 					return true;
 				}				
 
 			} else {
 
+				$this->attributes['updated_at'] = $now;
+
 				if ( $this->_db->update(PREFIX.$this->table,$this->attributes, [ 'id' => $this->id ]) ) {
+					$this->updated_at = $now;
 					return true;
 				}
 
@@ -154,6 +170,48 @@ abstract class Model extends Controller {
 	{
 		$instance = new static();
 		return $instance->getSet($limit,$offset);
+	}
+
+	public static function getWhere ( $key = FALSE, $arg2 = FALSE, $arg3 = FALSE )
+	{
+		if ( !$arg2 || !$key) return NULL;
+		$instance = new static();
+		$operator = '=';
+		$result = NULL;
+		$query_string = 'SELECT * FROM '. PREFIX.$instance->table . " WHERE $key ";
+
+		// Setup query string acc to operator
+		if ( !$arg3 ) {
+			$query_string .= "= $arg3 ";
+		} else {
+			if ( !preg_match($instance->operators, $arg2) ) return NULL;
+			$query_string .= $arg2 . ' ';
+			$value = '';
+
+			switch ( $arg2 ) {					
+				case 'in': case 'IN':
+				case 'not in': case 'NOT IN':
+					if ( is_array($arg3) ) {
+						$value = $arg3;
+					} else {
+						$value = [$arg3];
+					}
+					$value = '('. implode(',', array_map(function ($item)
+					{
+						return '"'.$item.'"';
+					}, $value)) .')';
+					break;
+				default:
+					$value = $value;
+					break;
+			}
+
+			$query_string .= $value;
+		}
+
+		$query_string .= '  ORDER BY created_at DESC';
+		$result = $instance->_db->select($query_string);
+		return $result;		
 	}
 
 	private function queryAll ($sort_by , $order)

@@ -11,6 +11,12 @@
                       <span>Site Info</span>
                   </a>
                 </li>     
+
+                <li class="sidebar-item <?= ( $page == 'module' ? 'active' : '' ) ?>">
+                  <a class="sidebar-link" href="/admin/module/home" class="">
+                      <span>Page Modules</span>
+                  </a>
+                </li>     
                     
                 <!-- CONTROLLER PAGES -->        
                 <?php if ( isset($data['resourced_models']) ): ?>
@@ -26,36 +32,8 @@
                 <?php endif ?>
 
             </ul>
-
-            <!-- page modules nav -->
-            <div class="sidebar-header">
-              <h5><em>Page Modules</em></h3>
-            </div>
-            <ul class="sidebar-nav page-modules-nav">
-            <?php
-
-            $pages = [
-              'home' => 'Home'
-            ];
-
-            foreach ($pages as $page => $title):
-              ?>
-
-                <li class="sidebar-item <?= ( $page == 'info' ? 'active' : '' ) ?>">
-                  <a class="sidebar-link" href="/admin/page/<?= $page ?>" class="">
-                      <span><?= $title ?></span>
-                  </a>
-                </li>   
-              
-              <?php
-              endforeach
-            ?>  
-            </ul>
-            
-
-          
-
           <!-- sidebar menu end-->
+
       </div>
   </aside>
   <!--sidebar end

@@ -7,6 +7,23 @@ function isFunction( fn ) {
 }
 
 /**
+ * Tests whether the argument supplied is an Array
+ * @param  {arr} arr
+ * @return {Boolean}
+ */
+function isArray ( arr ) {
+    return arr instanceof Array;
+}
+
+/**
+ * removes an item from array
+ * @return void 
+ */
+Array.prototype.remove = function (index) {
+    this.splice(index,1);
+}
+
+/**
  * Checks whether a given item is present in the given array
  * @param  {any} item = the item to be searched
  * @param  {array} arr  = the array to search from
@@ -41,4 +58,18 @@ function getFileType (file) {
         return 'pdf';
     }
     return 'other';
+}
+
+/**
+ * Generates a GUID
+ * @return {string} the guid
+ */
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
 }

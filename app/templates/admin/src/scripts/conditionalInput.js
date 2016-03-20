@@ -1,4 +1,4 @@
-App.createModule( 'ImageSelect', (function (app) {
+App.createModule( 'ConditionalInput', (function (app) {
     
     var module = {};
 
@@ -54,10 +54,6 @@ App.createModule( 'ImageSelect', (function (app) {
     /**
      * API
      */
-    
-    module.getSelectables = function () {
-        return selectables;
-    };
 
 
 

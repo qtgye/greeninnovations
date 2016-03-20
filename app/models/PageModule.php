@@ -13,12 +13,21 @@ use \core\model;
 class PageModule extends Model {
 
     protected $fillable = [
-        'title',
         'name',
-        'content'
+        'value'
     ];
 
     public static $plural = 'Page Modules';
+
+    public static $modules = [
+        'home' => [
+            'home-hero-carousel'
+        ]
+    ];
+
+    public static $pages = [
+        'home' => 'Home'
+    ];
 
     public function __construct ($data = [])
     {

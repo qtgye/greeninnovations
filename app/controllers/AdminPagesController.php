@@ -53,7 +53,8 @@ class AdminPagesController extends Controller {
         $data = array_merge( self::$data, [
             'method' => 'index',
             'page' => 'index',
-            'page_title' => 'Welcome'
+            'page_title' => 'Welcome',
+            'page_modules' => \models\PageModule::$pages
         ]);
         View::rendertemplate('page', $data);
     }
@@ -171,9 +172,43 @@ class AdminPagesController extends Controller {
         View::rendertemplate('page', $data);
     }
 
-    public function page ($page)
+    public function modules ($page)
     {
+        global $input;
+        $model = '\models\PageModule';
+        $pages = array_keys($model::$modules);
+
+        // redirect  if not existing page
+        if ( !in_array($page,$pages) ) {
+            url::redirect('/admin/module/'.$pages[0],true);
+        }
+
+        // setup modules for current page
+        $modules = [];
+        $modules_query = $model::getWhere('name','in',$model::$modules[$page]);
+        foreach ($modules_query as $key => $module) {
+            $modules[$module->name] = $module->value;
+        }
+        $input->update($modules);
+
+        // setup page data
+        self::update_page_data('module');
+        $data = [
+            'page_title' => 'Page Modules',
+            'page' => 'module',
+            'method' =>'edit',
+            'modules_pages' => $model::$pages,
+            'modules_page' => $page,
+            'model_name' => 'module',
+            'module' => (object) ['id'=>$page],
+            'controller_name' => 'PageModulesController',
+            'submit_text' => 'Update Modules'
+        ];
+        $data = array_merge(self::$data,$data);
+
         
+
+        View::rendertemplate('page', $data);
     }
 
     public function ajax ( $model_name )
@@ -243,12 +278,12 @@ class AdminPagesController extends Controller {
     public static function update_page_data($model_name = '')
     {
         self::$data['page_title'] = ucfirst($model_name);
-        self::$data['page'] = $model_name;        
+        self::$data['page'] = $model_name;
         self::$data['model_name'] = $model_name;
         self::$data['controller_name'] = self::$data['model_name'] . 'sController';
 
         // get images for particular models
-        if ( preg_match('/(product|partner|project|info|news)/i', $model_name ) ) {
+        if ( preg_match('/(product|partner|project|info|news|module)/i', $model_name ) ) {
             self::$data['images'] = \models\Media::images();
             self::$data['has_image_modal'] = true;
         }
