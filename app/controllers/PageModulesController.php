@@ -46,7 +46,7 @@ class PageModulesController extends Controller {
 
         }
 
-        session::flash(['success'=>'Succesfully updated information.']);
+        session::flash(['success'=>'Succesfully updated page modules.']);
         url::redirect("/admin/module/$page", true);
 
     }
