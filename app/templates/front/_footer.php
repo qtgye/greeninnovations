@@ -28,7 +28,7 @@
 <!-- /#page --> 
 
 <!-- JavaScript --> 
-<script src="https://npmcdn.com/flickity@1.1/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity@1.1/dist/flickity.pkgd.min.js"></script>
 <script src="/app/templates/front/minify/rgen_min.js"></script>
 <script async="" src="/app/templates/front/js/rgen.js"></script>
 
