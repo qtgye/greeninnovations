@@ -12,7 +12,7 @@
     <!-- Lib CSS -->
     <link href="/app/templates/front/minify/rgen_min.css" rel="stylesheet">
     <link href="/app/templates/front/css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://npmcdn.com/flickity@1.1/dist/flickity.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@1.1/dist/flickity.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/app/templates/front/css/_build.css">
